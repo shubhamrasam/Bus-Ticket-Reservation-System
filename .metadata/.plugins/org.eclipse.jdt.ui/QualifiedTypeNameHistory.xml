@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.ResourceBundle"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.SomeThingWentWrong"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.exceptions.WrongArgumentException"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.WrongCredentials"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.BookingFail"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.Customer"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.BusInfo"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+</qualifiedTypeNameHistroy>
