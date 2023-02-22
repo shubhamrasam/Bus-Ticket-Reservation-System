@@ -1,0 +1,34 @@
+
+create table customer(
+customerId int primary key auto_increment,
+fName varchar(20),
+lName varchar(20),
+mobile char(10),
+email varchar(30),
+password varchar(20)
+);
+
+
+create table busbooking(
+orderId int primary key auto_increment,
+customerId int ,
+busNumber int ,
+DateOfBooking DATETIME ,
+Total_tickets int,
+Total_fare int ,
+CONSTRAINT c_fk foreign key(customerId) references customer(customerId) on delete SET Null,
+CONSTRAINT b_fk foreign key(busNumber) references busInfo(BusNo) on delete SET Null
+);
+
+create table busInfo(
+BusNo int primary key,
+Depfrom varchar(20),
+Arrto varchar(20),
+Total_Seats int,
+booked_seats int,
+avaliable_seats int,
+Dep DATETIME,
+ARR DATETIME,
+Fare int
+);
+

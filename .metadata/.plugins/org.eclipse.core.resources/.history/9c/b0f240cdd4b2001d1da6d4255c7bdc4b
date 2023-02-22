@@ -1,0 +1,62 @@
+package com.busreservation.dao;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.BookingFail;
+import com.busreservation.exception.WrongCredentials;
+
+public class BusBookingDaoImpl implements BusBookingDao {
+
+	@Override
+	public boolean bookTicket(Customer customer, BusInfo busInfo , int tickets) throws BookingFail {
+		Connection connection = null;
+		
+		try {
+			
+			connection = DBUtils.createConnection();
+			
+			String  connection.prepareStatement(insert_query); = "Select * from BusInfo where BusNo=? and avaliable_seats >= ?";
+			
+			PreparedStatement checkStatement =  connection.prepareStatement( connection.prepareStatement(insert_query););
+			
+			
+			String insert_query = "Insert into busbooking (customerId,busNumber,DateOfBooking,Total_tickets,Total_fare) values (? , ? , ? , ? , ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(insert_query);
+			
+			statement.setInt(1,customer.getCustomerId());
+			statement.setInt(2,busInfo.getBusNo());
+			statement.setDate(3,Date.valueOf(LocalDateTime.now().toString()));
+			statement.setInt(4,tickets);
+			statement.setInt(5,tickets*busInfo.getFare());
+
+			int result = statement.executeUpdate();
+			
+			if(result > 0) {
+			   	throw new WrongCredentials("Login Fail! Please Enter Valid Credentials");
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				DBUtils.closeConnection(connection);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return true;
+	}
+
+}

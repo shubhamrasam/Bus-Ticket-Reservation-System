@@ -1,0 +1,9 @@
+package com.busreservation.exception;
+
+public class SomeThingWentWrong extends Exception {
+
+	SomeThingWentWrong(String message){
+		super(message);
+	}
+	
+}

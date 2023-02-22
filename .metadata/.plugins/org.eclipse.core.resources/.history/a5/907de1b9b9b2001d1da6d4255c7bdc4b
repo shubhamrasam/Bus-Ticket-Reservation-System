@@ -1,0 +1,12 @@
+package com.busreservation.dto;
+
+public class CustomerImpl implements Customer {
+
+	private int customerId;
+	private String fName;
+	private String lName;
+	private int mobile;
+	private String email;
+	privateString password;
+	
+}

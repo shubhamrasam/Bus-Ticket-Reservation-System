@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\illegal-quiver-3898\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+164810903.index
+4107193511.index

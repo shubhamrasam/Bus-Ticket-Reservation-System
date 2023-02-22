@@ -1,0 +1,9 @@
+package com.busreservation.exception;
+
+public class WrongCredentials extends Exception {
+
+	WrongCredentials(String message){
+		super(message);
+	}
+	
+}

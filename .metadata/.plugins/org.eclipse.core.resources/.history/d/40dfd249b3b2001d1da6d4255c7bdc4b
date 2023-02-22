@@ -1,0 +1,20 @@
+package com.busreservation.dao;
+
+public class DBUtils {
+    
+	final static String url;
+	final static String username; 
+	final static String password;
+	
+	static {
+	    
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+}

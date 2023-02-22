@@ -1,0 +1,7 @@
+package com.busreservation.dao;
+
+public interface CustomerDao {
+
+	boolean customerSignUp(Customer customer);
+	
+}

@@ -1,0 +1,15 @@
+package com.busreservation.dto;
+
+public class BusinfoImpl {
+   
+	int busNo;
+	String depfrom;
+	String arrto;
+	int total_seats;
+	int booked_seats;
+	int avaliable_seats;
+	LocalDateTime departure;
+	LocalDateTime arrival;
+	int Fare;
+	
+}
