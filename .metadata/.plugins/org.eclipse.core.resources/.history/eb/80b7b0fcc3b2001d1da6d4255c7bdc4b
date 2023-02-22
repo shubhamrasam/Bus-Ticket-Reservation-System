@@ -1,0 +1,45 @@
+package com.busreservation.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.SomeThingWentWrong;
+import com.busreservation.exception.WrongCredentials;
+
+public class CustomerDaoImpl implements CustomerDao {
+    
+	static boolean isEmptyResult(ResultSet result) throws SQLException {
+		
+		return !result.isBeforeFirst() && result.getRow()==0? true : false;
+	}
+	
+	@Override
+	public boolean customerSignUp(Customer customer) throws SomeThingWentWrong {
+		
+		Connection connection = null;
+		
+		try {
+			connection = DBUtils.createConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				DBUtils.closeConnection(connection);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean customerLogin(String email, String password) throws SomeThingWentWrong, WrongCredentials {
+		Connection connection = null;
+		return true;
+	}
+     
+}

@@ -1,0 +1,36 @@
+package com.busreservation.dto;
+
+import java.time.LocalDateTime;
+
+public class BusinfoImpl {
+   
+	int busNo;
+	String depfrom;
+	String arrto;
+	int total_seats;
+	int booked_seats;
+	int avaliable_seats;
+	LocalDateTime departure;
+	LocalDateTime arrival;
+	int fare;
+	
+	public BusinfoImpl() {};
+	
+	public BusinfoImpl(int busNo, String depfrom, String arrto, int total_seats, int booked_seats, int avaliable_seats,
+			LocalDateTime departure, LocalDateTime arrival, int fare) {
+
+		this.busNo = busNo;
+		this.depfrom = depfrom;
+		this.arrto = arrto;
+		this.total_seats = total_seats;
+		this.booked_seats = booked_seats;
+		this.avaliable_seats = avaliable_seats;
+		this.departure = departure;
+		this.arrival = arrival;
+		this.fare = fare;
+	}
+	
+	
+	
+	
+}

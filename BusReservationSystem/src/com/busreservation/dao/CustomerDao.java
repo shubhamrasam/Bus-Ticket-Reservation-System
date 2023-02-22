@@ -1,0 +1,12 @@
+package com.busreservation.dao;
+
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.SomeThingWentWrong;
+import com.busreservation.exception.WrongCredentials;
+
+public interface CustomerDao {
+
+	boolean customerSignUp(Customer customer) throws SomeThingWentWrong;
+	boolean customerLogin(String email , String password) throws SomeThingWentWrong , WrongCredentials;
+	
+}

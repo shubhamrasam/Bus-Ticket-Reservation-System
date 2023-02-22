@@ -1,0 +1,15 @@
+package com.busreservation.dao;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.BookingFail;
+
+public class BusBookingDaoImpl implements BusBookingDao {
+
+	@Override
+	public boolean bookTicket(Customer customer, BusInfo busInfo) throws BookingFail {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+}

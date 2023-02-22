@@ -1,0 +1,5 @@
+package com.busreservation.exception;
+
+public class SomeThingWentWrong {
+
+}

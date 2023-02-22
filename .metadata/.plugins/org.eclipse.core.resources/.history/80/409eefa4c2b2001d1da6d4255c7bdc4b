@@ -1,0 +1,9 @@
+package com.busreservation.dao;
+
+import com.busreservation.dto.Customer;
+
+public interface CustomerDao {
+
+	boolean customerSignUp(Customer customer);
+	boolean customerLogin(String email , String password);
+}
