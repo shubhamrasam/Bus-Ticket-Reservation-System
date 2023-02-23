@@ -1,0 +1,41 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+import com.busreservation.dto.Customer;
+import com.busreservation.dto.CustomerImpl;
+
+public class SignUpCustomer {
+
+	public static void signUpCustomer(Scanner sc) {
+
+		 CustomerDao Customer = new CustomerDaoImpl();
+		 
+		 Customer cus = new CustomerImpl();
+		
+//		 customerId int primary key auto_increment,
+//		 fName varchar(20) NOT NULL ,
+//		 lName varchar(20),
+//		 mobile char(10) NOT NULL ,
+//		 email varchar(30) unique NOT NULL,
+//		 password varchar(20) NOT NULL
+		 
+		 System.out.println("Please Enter your First Name");
+		 String fName = sc.next();
+		 System.out.println("Please Enter your Last Name");
+		 String lName = sc.next();
+		 System.out.println("Please Enter your Mobile Number");
+		 String mobile = sc.next();
+		 System.out.println("Please Enter your Email");
+		 String fname = sc.next();
+		 System.out.println("Please Enter your Password");
+		 String fname = sc.next();
+		 System.out.println("Please Enter your First Name");
+		 String fname = sc.next();
+		 
+		 
+	}
+
+}

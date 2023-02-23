@@ -1,0 +1,11 @@
+package com.busreservation.dao;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.BookingFail;
+
+public interface BusBookingDao {
+
+	boolean bookTicket(int customerid , BusInfo busInfo , int tickets) throws BookingFail;
+	
+}

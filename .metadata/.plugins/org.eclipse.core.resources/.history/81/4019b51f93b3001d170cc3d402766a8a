@@ -1,0 +1,13 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+public class LoginCustomer {
+
+	public static void loginCustomer(Scanner sc) {
+
+		 Customer customer = CustomerImpl();
+		
+	}
+
+}

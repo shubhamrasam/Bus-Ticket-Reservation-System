@@ -1,0 +1,9 @@
+package com.busreservation.dao;
+
+import com.busreservation.exception.SomeThingWentWrong;
+
+public interface BusInfoDao {
+
+	String addBus(BusInfo busInfo) throws SomeThingWentWrong 
+	
+}

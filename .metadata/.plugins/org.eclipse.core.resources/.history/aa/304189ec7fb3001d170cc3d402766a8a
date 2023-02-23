@@ -1,0 +1,23 @@
+package com.busreservation.ui;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+
+public class Main {
+
+	static void choiceCustomerOrAdmin() {
+		
+		System.out.println()
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		choiceCustomerOrAdmin();
+		
+	}
+	
+}

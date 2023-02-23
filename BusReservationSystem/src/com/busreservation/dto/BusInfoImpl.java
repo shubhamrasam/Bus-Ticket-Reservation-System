@@ -5,22 +5,26 @@ import java.util.Objects;
 
 public class BusInfoImpl implements BusInfo {
    
-	int busNo;
-	String depfrom;
-	String arrto;
-	int total_seats;
-	int booked_seats;
-	int avaliable_seats;
-	LocalDateTime departure;
-	LocalDateTime arrival;
-	int fare;
+	private int busNo;
+	private String busType;
+	private String depfrom;
+	private String arrto;
+	private int total_seats;
+	private int booked_seats;
+	private int avaliable_seats;
+	private LocalDateTime departure;
+	private LocalDateTime arrival;
+	private int fare;
 	
 	public BusInfoImpl() {};
 	
-	public BusInfoImpl(int busNo, String depfrom, String arrto, int total_seats, int booked_seats, int avaliable_seats,
-			LocalDateTime departure, LocalDateTime arrival, int fare) {
-
+	
+	
+	public BusInfoImpl(int busNo, String busType, String depfrom, String arrto, int total_seats, int booked_seats,
+			int avaliable_seats, LocalDateTime departure, LocalDateTime arrival, int fare) {
+		super();
 		this.busNo = busNo;
+		this.busType = busType;
 		this.depfrom = depfrom;
 		this.arrto = arrto;
 		this.total_seats = total_seats;
@@ -30,6 +34,17 @@ public class BusInfoImpl implements BusInfo {
 		this.arrival = arrival;
 		this.fare = fare;
 	}
+
+
+
+	public BusInfoImpl(int busNo, int booked_seats, int avaliable_seats, int fare) {
+
+		this.busNo = busNo;
+		this.booked_seats = booked_seats;
+		this.avaliable_seats = avaliable_seats;
+		this.fare = fare;
+	}
+	
 	@Override
 	public int getBusNo() {
 		return busNo;
@@ -114,6 +129,15 @@ public class BusInfoImpl implements BusInfo {
 	public int hashCode() {
 		return Objects.hash(arrival, arrto, avaliable_seats, booked_seats, busNo, departure, depfrom, fare,
 				total_seats);
+	}
+	@Override
+	public String getBusType() {
+		return busType;
+	}
+
+	@Override
+	public void setBusType(String busType) {
+		this.busType = busType;
 	}
 
 	@Override

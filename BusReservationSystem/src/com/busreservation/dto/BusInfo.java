@@ -38,4 +38,8 @@ public interface BusInfo {
 	public int getFare();
 
 	public void setFare(int fare);
+	
+	public String getBusType();
+
+	public void setBusType(String busType);
 }

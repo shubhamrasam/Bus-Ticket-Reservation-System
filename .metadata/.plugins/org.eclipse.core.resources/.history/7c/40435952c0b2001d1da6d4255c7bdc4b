@@ -1,5 +1,0 @@
-package com.busreservation.dao;
-
-public class CustomerDaoImpl {
-
-}

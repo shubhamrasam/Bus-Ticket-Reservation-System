@@ -1,0 +1,27 @@
+package com.busreservation.ui;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+
+public class Main {
+
+	static void choiceCustomerOrAdmin(Scanner sc) {
+		
+		System.out.println(Colors.BLACK_BOLD_BRIGHT+"1.Enter As Customer"+"\n"
+		                                           +"2.Enter As Admin"+"\n"
+				                                   +"3.Exit"+"\n");
+//		int choice = 0; 
+//		System.out.print("Your Choice: "+sc.next());
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		choiceCustomerOrAdmin(sc);
+		
+	}
+	
+}

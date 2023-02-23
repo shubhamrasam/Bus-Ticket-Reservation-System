@@ -1,0 +1,18 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+
+public class SignUpCustomer {
+
+	public static void signUpCustomer(Scanner sc) {
+
+		 CustomerDao Customer = new CustomerDaoImpl();
+		 
+		 Customer cus = new CustomerImpl();
+		
+	}
+
+}

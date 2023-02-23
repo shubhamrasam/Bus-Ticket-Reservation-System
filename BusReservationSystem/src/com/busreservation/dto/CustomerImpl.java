@@ -22,6 +22,14 @@ public class CustomerImpl implements Customer {
 		this.password = password;
 	}
 	
+	public CustomerImpl( String fName, String lName, String mobile, String email, String password) {
+		this.fName = fName;
+		this.lName = lName;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+	}
+	
 	@Override
 	public int getCustomerId() {
 		return customerId;
