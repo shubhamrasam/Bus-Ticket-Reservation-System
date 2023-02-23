@@ -1,0 +1,114 @@
+package com.busreservation.dto;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+public class TicketImpl implements Ticket {
+
+	private int ticketNo;
+	private int customerId;
+	private int busNumber;
+	private LocalDateTime DateOfBooking;
+	private LocalDateTime Departure;
+	private int Total_tickets;
+	private int Total_fare;
+	
+	public TicketImpl() {};
+	
+	public TicketImpl(int ticketNo, int customerId, int busNumber, LocalDateTime dateOfBooking, LocalDateTime departure,
+			int total_tickets, int total_fare) {
+		this.ticketNo = ticketNo;
+		this.customerId = customerId;
+		this.busNumber = busNumber;
+		DateOfBooking = dateOfBooking;
+		Departure = departure;
+		Total_tickets = total_tickets;
+		Total_fare = total_fare;
+	}
+
+	public int getTicketNo() {
+		return ticketNo;
+	}
+
+	public void setTicketNo(int ticketNo) {
+		this.ticketNo = ticketNo;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public int getBusNumber() {
+		return busNumber;
+	}
+
+	public void setBusNumber(int busNumber) {
+		this.busNumber = busNumber;
+	}
+
+	public LocalDateTime getDateOfBooking() {
+		return DateOfBooking;
+	}
+
+	public void setDateOfBooking(LocalDateTime dateOfBooking) {
+		DateOfBooking = dateOfBooking;
+	}
+
+	public LocalDateTime getDeparture() {
+		return Departure;
+	}
+
+	public void setDeparture(LocalDateTime departure) {
+		Departure = departure;
+	}
+
+	public int getTotal_tickets() {
+		return Total_tickets;
+	}
+
+	public void setTotal_tickets(int total_tickets) {
+		Total_tickets = total_tickets;
+	}
+
+	public int getTotal_fare() {
+		return Total_fare;
+	}
+
+	public void setTotal_fare(int total_fare) {
+		Total_fare = total_fare;
+	}
+
+	@Override
+	public String toString() {
+		return "TicketImpl [ticketNo=" + ticketNo + ", customerId=" + customerId + ", busNumber=" + busNumber
+				+ ", DateOfBooking=" + DateOfBooking + ", Departure=" + Departure + ", Total_tickets=" + Total_tickets
+				+ ", Total_fare=" + Total_fare + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(DateOfBooking, Departure, Total_fare, Total_tickets, busNumber, customerId, ticketNo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TicketImpl other = (TicketImpl) obj;
+		return Objects.equals(DateOfBooking, other.DateOfBooking) && Objects.equals(Departure, other.Departure)
+				&& Total_fare == other.Total_fare && Total_tickets == other.Total_tickets
+				&& busNumber == other.busNumber && customerId == other.customerId && ticketNo == other.ticketNo;
+	}
+	
+	
+	
+	
+}

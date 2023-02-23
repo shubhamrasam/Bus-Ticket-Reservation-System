@@ -1,0 +1,22 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+
+public class LoginCustomer {
+
+	public static void loginCustomer(Scanner sc) {
+
+		 CustomerDao Customer = new CustomerDaoImpl();
+		 
+		 System.out.println("Please Enter your Password");
+		 String email = sc.next();
+		 
+		 
+	     Customer.customerLogin(username, password);
+		
+	}
+
+}

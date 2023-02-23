@@ -1,0 +1,9 @@
+package com.busreservation.ui;
+
+public class loginCustomer {
+
+	static loginCustomer(Scanner sc) {
+		
+	}
+	
+}

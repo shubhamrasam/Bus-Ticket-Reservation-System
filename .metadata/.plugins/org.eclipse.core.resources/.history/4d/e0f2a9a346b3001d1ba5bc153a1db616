@@ -1,0 +1,15 @@
+package com.busreservation.dto;
+
+import java.time.LocalDateTime;
+
+public class TicketImpl {
+
+	int ticketNo;
+	int customerId;
+	int busNumber;
+	LocalDateTime DateOfBooking;
+	LocalDateTime Departure;
+	int Total_tickets;
+	int Total_fare;
+	
+}

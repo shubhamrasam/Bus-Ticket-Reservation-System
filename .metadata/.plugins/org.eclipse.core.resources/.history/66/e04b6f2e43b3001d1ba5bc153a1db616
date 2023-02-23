@@ -1,0 +1,18 @@
+package com.busreservation.dao;
+
+import java.time.LocalDateTime;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.BookingFail;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public interface BusBookingDao {
+
+	boolean bookTicket(int customerid , BusInfo busInfo , int tickets) throws BookingFail;
+	
+	
+	
+	boolean cancelBooking(int ticketNo, LocalDateTime dep) throws SomeThingWentWrong;
+	
+}

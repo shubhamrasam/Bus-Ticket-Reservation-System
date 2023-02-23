@@ -1,0 +1,5 @@
+package com.busreservation.dao;
+
+public interface BusInfoDao {
+
+}

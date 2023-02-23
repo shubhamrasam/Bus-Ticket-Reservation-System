@@ -1,0 +1,11 @@
+package com.busreservation.ui;
+
+import java.util.Scanner;
+
+public class SignUpCustomer {
+
+	static void signUpCustomer(Scanner sc) {
+		
+	}
+	
+}

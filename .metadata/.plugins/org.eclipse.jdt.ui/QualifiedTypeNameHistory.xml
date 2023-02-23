@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.busreservation.exception.WrongCredentials"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.BusInfo"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.CustomerNotFound"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.BusInfoImpl"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.NoTicketFound"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.TicketImpl"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.Ticket"/>
+    <fullyQualifiedTypeName name="com.busreservation.exception.SomeThingWentWrong"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.busreservation.colors.Colors"/>
+    <fullyQualifiedTypeName name="com.busreservation.ui.loginCustomer"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.busreservation.methods.LoginCustomer"/>
+    <fullyQualifiedTypeName name="com.busreservation.methods.SignUpCustomer"/>
+    <fullyQualifiedTypeName name="com.busreservation.dao.CustomerDao"/>
+    <fullyQualifiedTypeName name="com.busreservation.dao.CustomerDaoImpl"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.CustomerImpl"/>
+    <fullyQualifiedTypeName name="com.busreservation.dto.Customer"/>
+</qualifiedTypeNameHistroy>

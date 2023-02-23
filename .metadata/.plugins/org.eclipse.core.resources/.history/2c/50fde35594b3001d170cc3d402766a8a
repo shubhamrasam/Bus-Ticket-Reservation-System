@@ -1,0 +1,110 @@
+package com.busreservation.dto;
+
+import java.util.Objects;
+
+public class CustomerImpl implements Customer {
+
+	private int customerId;
+	private String fName;
+	private String lName;
+	private String mobile;
+	private String email;
+	private String password;
+	
+	public CustomerImpl() {};
+	
+	public CustomerImpl(int customerId, String fName, String lName, String mobile, String email, String password) {
+		this.customerId = customerId;
+		this.fName = fName;
+		this.lName = lName;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+	}
+	
+	public CustomerImpl String fName, String lName, String mobile, String email, String password) {
+		this.fName = fName;
+		this.lName = lName;
+		this.mobile = mobile;
+		this.email = email;
+		this.password = password;
+	}
+	
+	@Override
+	public int getCustomerId() {
+		return customerId;
+	}
+	@Override
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	@Override
+	public String getfName() {
+		return fName;
+	}
+	@Override
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+	@Override
+	public String getlName() {
+		return lName;
+	}
+	@Override
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+	@Override
+	public String getMobile() {
+		return mobile;
+	}
+	@Override
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	@Override
+	public String getEmail() {
+		return email;
+	}
+	@Override
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer:-  CustomerId: " + customerId + ", FirstName: " + fName + ", LastName: " + lName + ", Mobile: " + mobile
+				+ ", Email: " + email + ", Password: " + password;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(customerId, email, fName, lName, mobile, password);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomerImpl other = (CustomerImpl) obj;
+		return customerId == other.customerId && Objects.equals(email, other.email)
+				&& Objects.equals(fName, other.fName) && Objects.equals(lName, other.lName) && mobile == other.mobile
+				&& Objects.equals(password, other.password);
+	}
+	
+	
+	
+	
+}

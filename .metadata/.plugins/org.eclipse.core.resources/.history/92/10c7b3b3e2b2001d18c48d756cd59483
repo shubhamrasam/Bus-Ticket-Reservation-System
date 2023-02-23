@@ -1,0 +1,12 @@
+package com.busreservation.dao;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public interface BusInfoDao {
+    
+	boolean loginUser(string username , string password);
+	String addBus(BusInfo busInfo) throws SomeThingWentWrong;
+	
+	
+}

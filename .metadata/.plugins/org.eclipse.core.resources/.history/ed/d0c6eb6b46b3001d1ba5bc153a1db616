@@ -1,0 +1,13 @@
+package com.busreservation.dto;
+
+public class TicketImpl {
+
+	int ticketNo      | int      | NO   | PRI | NULL    | auto_increment |
+	int customerId    | int      | YES  | MUL | NULL    |                |
+	int busNumber     | int      | YES  | MUL | NULL    |                |
+	LocalDateTime DateOfBooking |  | YES  |     | NULL    |                |
+	LocalDateTime Departure     | datetime | YES  |     | NULL    |                |
+	int Total_tickets | int      | YES  |     | NULL    |                |
+	| Total_fare
+	
+}

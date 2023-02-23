@@ -1,0 +1,9 @@
+package com.busreservation.exception;
+
+public class NoTicketFound extents Exception {
+
+	public NoTicketFound(String message) {
+		super(message);
+	}
+	
+}

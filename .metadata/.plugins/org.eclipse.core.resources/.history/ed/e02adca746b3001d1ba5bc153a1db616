@@ -1,0 +1,32 @@
+package com.busreservation.dto;
+
+import java.time.LocalDateTime;
+
+public class TicketImpl {
+
+	int ticketNo;
+	int customerId;
+	int busNumber;
+	LocalDateTime DateOfBooking;
+	LocalDateTime Departure;
+	int Total_tickets;
+	int Total_fare;
+	
+	public TicketImpl(int ticketNo, int customerId, int busNumber, LocalDateTime dateOfBooking, LocalDateTime departure,
+			int total_tickets, int total_fare) {};
+	
+	public TicketImpl(int ticketNo, int customerId, int busNumber, LocalDateTime dateOfBooking, LocalDateTime departure,
+			int total_tickets, int total_fare) {
+		super();
+		this.ticketNo = ticketNo;
+		this.customerId = customerId;
+		this.busNumber = busNumber;
+		DateOfBooking = dateOfBooking;
+		Departure = departure;
+		Total_tickets = total_tickets;
+		Total_fare = total_fare;
+	}
+	
+	
+	
+}

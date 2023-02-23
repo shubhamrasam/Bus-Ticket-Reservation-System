@@ -1,0 +1,8 @@
+package com.busreservation.exception;
+
+public class CustomerNotFound extends Exception{
+
+	CustomerNotFound(String message){
+		super(message);
+	}
+}
