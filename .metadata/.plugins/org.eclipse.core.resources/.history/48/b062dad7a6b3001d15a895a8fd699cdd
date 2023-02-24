@@ -1,0 +1,13 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+public class SearchBus {
+
+	public static void searchBusByDestination(Scanner sc) {
+		
+	}
+	
+	
+	
+}

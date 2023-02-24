@@ -2,6 +2,7 @@ package com.busreservation.ui;
 
 import java.util.Scanner;
 import com.busreservation.colors.Colors;
+import com.busreservation.methods.AdminLogin;
 import com.busreservation.methods.LoginCustomer;
 import com.busreservation.methods.SignUpCustomer;
 
@@ -15,7 +16,7 @@ public class Main {
 						                                   +" | 3.EXIT              | "+"\n"
 						                                   +"-------------------------"+"\n"+Colors.RESET);
 		
-		System.out.print(Colors.BLACK_BOLD+" Your Choice: "+Colors.RESET);
+		System.out.print(Colors.BLACK_BOLD+"Your Choice: "+Colors.RESET);
 		
 		int choice = sc.nextInt(); 
 		
@@ -28,8 +29,8 @@ public class Main {
 			adminMethods(sc);
 			
 		}else if(choice == 3) {
-			
-			System.out.println(Colors.RED_BACKGROUND+"  Thank You  "+Colors.RESET);
+			System.out.println();
+			System.out.println(Colors.BLACK_ITALIC+"Thank You! Have a Great Day"+Colors.RESET);
 			sc.close();
 			
 		}else {
@@ -42,7 +43,7 @@ public class Main {
 	
 	static void customerMethods(Scanner sc) {
 		
-		System.out.println(Colors.GREEN_BACKGROUND+"Welcome to Bus Reservation System"+Colors.RESET);
+		System.out.println(Colors.GREEN_BACKGROUND+" Welcome to Bus Reservation System "+Colors.RESET);
 		System.out.println();
 		System.out.println(Colors.LIGHT_BLUE_BACKGROUND    +"-------------------------"+"\n"
 						                                   +" | 1.SignUp            | "+"\n"
@@ -53,6 +54,7 @@ public class Main {
 		System.out.print(Colors.BLACK_BOLD+" Your Choice: "+Colors.RESET);
 		
 		int choice = sc.nextInt(); 
+		System.out.println("");
 		
 		if(choice == 1) {
 			
@@ -75,6 +77,8 @@ public class Main {
 	
 	static void adminMethods(Scanner sc) {
 		
+		AdminLogin.adminLogin(sc);
+		
 	}
 	
 	public static void main(String[] args) {
@@ -83,7 +87,7 @@ public class Main {
 		
 		choiceCustomerOrAdmin(sc);
 		
-		
+		sc.close();
 	}
 	
 }

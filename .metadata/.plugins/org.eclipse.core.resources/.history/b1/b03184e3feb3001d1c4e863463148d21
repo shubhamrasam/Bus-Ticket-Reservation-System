@@ -1,0 +1,10 @@
+package com.busreservation.methods;
+
+public class AdminDashboard {
+
+	public static adminDashboard(Scanner sc) {
+		
+		
+	}
+	
+}

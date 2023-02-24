@@ -1,0 +1,9 @@
+package com.busreservation.methods;
+
+public class BookTicket {
+
+	public static void bookTicket(Scanner sc) {
+		
+	}
+	
+}

@@ -1,0 +1,31 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.BusInfoDao;
+import com.busreservation.dao.BusInfoDaoImpl;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public class SearchBus {
+
+	public static void searchBusByDestination(Scanner sc) {
+		
+		BusInfoDao buses = new BusInfoDaoImpl();
+		
+		System.out.println("Bus Avalible From");
+		String dep = sc.next();
+		System.out.println("Bus Avalible till");
+		String arr = sc.next();
+		
+		try {
+			buses.searchBusByDestination(dep, arr);
+		} catch (SomeThingWentWrong e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+}

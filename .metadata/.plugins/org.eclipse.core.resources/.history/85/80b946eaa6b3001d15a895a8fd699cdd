@@ -1,0 +1,20 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.BusInfoDao;
+import com.busreservation.dao.BusInfoDaoImpl;
+
+public class SearchBus {
+
+	public static void searchBusByDestination(Scanner sc) {
+		
+		BusInfoDao buses = new BusInfoDaoImpl();
+		
+		buses.searchBusByDestination(dep, arr);
+		
+	}
+	
+	
+	
+}

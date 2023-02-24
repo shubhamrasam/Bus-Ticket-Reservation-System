@@ -1,0 +1,24 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+import com.busreservation.exception.CustomerNotFound;
+
+public class CustomerInfo {
+
+	public static void customerInfo(Scanner sc) {
+		
+		CustomerDao customers = new CustomerDaoImpl();
+		
+		try {
+			customers.getCustomersInfo();
+		} catch (CustomerNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+}

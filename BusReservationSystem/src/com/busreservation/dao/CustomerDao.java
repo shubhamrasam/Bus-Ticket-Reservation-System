@@ -14,8 +14,10 @@ public interface CustomerDao {
 	
 	boolean customerLogin(String email , String password) throws SomeThingWentWrong , WrongCredentials;
 	
-	boolean changeCustomerPassword(int customerID , String newPassword) throws CustomerNotFound ,SomeThingWentWrong;
+	boolean changeCustomerPassword(String email , String newPassword) throws CustomerNotFound ,SomeThingWentWrong;
 	
 	List<Customer> getCustomersInfo() throws CustomerNotFound;
+	
+	Customer getMyDetails(String email)throws CustomerNotFound;
 	
 }

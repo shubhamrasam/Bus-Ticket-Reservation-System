@@ -1,0 +1,24 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+import com.busreservation.dao.BusInfoDao;
+import com.busreservation.dao.BusInfoDaoImpl;
+
+public class AdminLogin {
+
+	public static void adminLogin(Scanner sc) {
+		 
+		 BusInfoDao admin = new BusInfoDaoImpl();
+		
+		 System.out.println(Colors.BLACK_BOLD +"Please Enter your username" + Colors.RESET);
+		 String username = sc.next();
+		 System.out.println(Colors.BLACK_BOLD +"Please Enter your Password"+ Colors.RESET);
+		 String password = sc.next();
+		 
+		 if(admin.loginAdmin(username, password))
+		 
+	}
+	
+}

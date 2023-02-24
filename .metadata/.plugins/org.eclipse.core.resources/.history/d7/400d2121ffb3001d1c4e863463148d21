@@ -1,0 +1,12 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+public class AdminDashboard {
+
+	public static void adminDashboard(Scanner sc) {
+		
+		
+	}
+	
+}
