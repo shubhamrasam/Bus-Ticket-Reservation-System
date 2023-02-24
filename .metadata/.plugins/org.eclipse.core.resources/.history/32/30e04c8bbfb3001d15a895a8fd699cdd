@@ -1,0 +1,31 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+import com.busreservation.exception.CustomerNotFound;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public class ChangePassword {
+
+	public static void changePassword(Scanner sc) {
+		
+		CustomerDao customer = new CustomerDaoImpl();
+		
+		System.out.println("Enter your Customer ID: ");
+		int cusID = sc.nextInt();
+		System.out.println("Enter your New Password: ");
+		String password = sc.next();
+		
+		try {
+			customer.changeCustomerPassword(email, password);
+			CustomerChoice.customerChoice(sc);
+		} catch (CustomerNotFound | SomeThingWentWrong e) {
+			e.printStackTrace();
+			CustomerChoice.customerChoice(sc);
+		}
+		
+	}
+	
+}

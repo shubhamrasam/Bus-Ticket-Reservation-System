@@ -10,7 +10,9 @@ import com.busreservation.exception.SomeThingWentWrong;
 
 public interface BusBookingDao {
 
-	boolean bookTicket(int customerid , BusInfo busInfo , int tickets) throws BookingFail;
+//	boolean bookTicket(int customerid , BusInfo busInfo , int tickets) throws BookingFail;
+	
+	boolean bookTicket(int customerid , int busId , int tickets) throws BookingFail;
 	
 	Ticket getTicket(int ticketNo) throws NoTicketFound;
 	

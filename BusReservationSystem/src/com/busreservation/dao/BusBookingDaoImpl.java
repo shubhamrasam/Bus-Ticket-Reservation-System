@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.BusInfoImpl;
 import com.busreservation.dto.Ticket;
 import com.busreservation.dto.TicketImpl;
 import com.busreservation.exception.BookingFail;
@@ -48,80 +49,80 @@ public class BusBookingDaoImpl implements BusBookingDao {
 		
 	}
 	
-	@Override
-	public boolean bookTicket(int customerid, BusInfo busInfo , int tickets) throws BookingFail {
-		Connection connection = null;
-		
-		try { 
-			
-			connection = DBUtils.createConnection();
-			
-			String check_query = "Select * from BusInfo where BusNo=? and avaliable_seats >= ? and Dep > ?";
-			
-			PreparedStatement checkStatement =  connection.prepareStatement(check_query);
-			
-			checkStatement.setInt(1, busInfo.getBusNo());
-			checkStatement.setInt(2, tickets);
-			checkStatement.setDate(3, Date.valueOf(LocalDateTime.now().toString()));
-			
-			int check_result = checkStatement.executeUpdate();
-			
-			if(check_result <= 0) {
-				
-				throw new BookingFail("No Seats Available");
-			}
-			
-			String insert_query = "Insert into busbooking (customerId,busNumber,DateOfBooking,Departure,Total_tickets,Total_fare,status) values (? , ? ,?, ? , ? , ? , ?)";
-			
-			PreparedStatement statement = connection.prepareStatement(insert_query);
-			
-			statement.setInt(1,customerid);
-			statement.setInt(2,busInfo.getBusNo());
-			statement.setDate(3,Date.valueOf(LocalDateTime.now().toString()));
-			statement.setDate(4,Date.valueOf(busInfo.getDeparture().toString()));
-			statement.setInt(5,tickets);
-			statement.setInt(6,tickets*busInfo.getFare());
-			statement.setBoolean(7,false);
-			
-			int result = statement.executeUpdate();
-			
-			if(result > 0) {
-				
-			   	throw new BookingFail("Booking Fail");
-			}
-			
-			String update_query = "Update BusInfo set avaliable_seats = ? , booked_seats = ? where BusNo = ? ";
-			
-			PreparedStatement update_statement = connection.prepareStatement(update_query);
-			
-			update_statement.setInt(1, busInfo.getAvaliable_seats() - tickets );
-			update_statement.setInt(2, busInfo.getBooked_seats() + tickets);
-			update_statement.setInt(3, busInfo.getBusNo());
-			
-			int update_result = statement.executeUpdate();
-			
-			if(update_result <= 0) {
-				
-			   	throw new BookingFail("Booking Fail");
-			}
-			
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-			
-		}finally {
-			
-			try {
-				DBUtils.closeConnection(connection);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-		return true;
-	}
+//	@Override
+//	public boolean bookTicket(int customerid, BusInfo busInfo , int tickets) throws BookingFail {
+//		Connection connection = null;
+//		
+//		try { 
+//			
+//			connection = DBUtils.createConnection();
+//			
+//			String check_query = "Select * from BusInfo where BusNo=? and avaliable_seats >= ? and Dep > ?";
+//			
+//			PreparedStatement checkStatement =  connection.prepareStatement(check_query);
+//			
+//			checkStatement.setInt(1, busInfo.getBusNo());
+//			checkStatement.setInt(2, tickets);
+//			checkStatement.setDate(3, Date.valueOf(LocalDateTime.now().toString()));
+//			
+//			int check_result = checkStatement.executeUpdate();
+//			
+//			if(check_result <= 0) {
+//				
+//				throw new BookingFail("No Seats Available");
+//			}
+//			
+//			String insert_query = "Insert into busbooking (customerId,busNumber,DateOfBooking,Departure,Total_tickets,Total_fare,status) values (? , ? ,?, ? , ? , ? , ?)";
+//			
+//			PreparedStatement statement = connection.prepareStatement(insert_query);
+//			
+//			statement.setInt(1,customerid);
+//			statement.setInt(2,busInfo.getBusNo());
+//			statement.setDate(3,Date.valueOf(LocalDateTime.now().toString()));
+//			statement.setDate(4,Date.valueOf(busInfo.getDeparture().toString()));
+//			statement.setInt(5,tickets);
+//			statement.setInt(6,tickets*busInfo.getFare());
+//			statement.setBoolean(7,false);
+//			
+//			int result = statement.executeUpdate();
+//			
+//			if(result > 0) {
+//				
+//			   	throw new BookingFail("Booking Fail");
+//			}
+//			
+//			String update_query = "Update BusInfo set avaliable_seats = ? , booked_seats = ? where BusNo = ? ";
+//			
+//			PreparedStatement update_statement = connection.prepareStatement(update_query);
+//			
+//			update_statement.setInt(1, busInfo.getAvaliable_seats() - tickets );
+//			update_statement.setInt(2, busInfo.getBooked_seats() + tickets);
+//			update_statement.setInt(3, busInfo.getBusNo());
+//			
+//			int update_result = statement.executeUpdate();
+//			
+//			if(update_result <= 0) {
+//				
+//			   	throw new BookingFail("Booking Fail");
+//			}
+//			
+//			
+//		} catch (SQLException e) {
+//			
+//			e.printStackTrace();
+//			
+//		}finally {
+//			
+//			try {
+//				DBUtils.closeConnection(connection);
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		
+//		return true;
+//	}
 
 	@Override
 	public boolean cancelBooking(int ticketNo) throws SomeThingWentWrong {
@@ -337,6 +338,107 @@ public class BusBookingDaoImpl implements BusBookingDao {
 		}
         
 	   return tickets;
+	}
+
+	@Override
+	public boolean bookTicket(int customerid, int busId, int tickets) throws BookingFail {
+		
+		Connection connection = null;
+		BusInfo busInfo = new BusInfoImpl();
+		try { 
+			connection = DBUtils.createConnection();
+
+			String get_bus = "select * from busInfo where BusNo = ? ";
+			
+			PreparedStatement getStatement = connection.prepareStatement(get_bus);
+			
+			ResultSet get_result = getStatement.executeQuery();
+			
+			if(isEmptyResult(get_result)) {
+				
+				throw new BookingFail("No Bus Found");
+			}
+			
+			if(get_result.next()) {
+				
+				busInfo.setBusNo(get_result.getInt("BusNo"));
+				busInfo.setDepfrom(get_result.getString("Depfrom"));
+				busInfo.setArrto(get_result.getString("Arrto"));
+				busInfo.setTotal_seats(get_result.getInt("Total_Seats"));
+				busInfo.setBooked_seats(get_result.getInt("booked_seats"));
+				busInfo.setAvaliable_seats(get_result.getInt("avaliable_seats"));
+				busInfo.setDeparture(LocalDateTime.parse(get_result.getString("Dep")));
+				busInfo.setArrival(LocalDateTime.parse(get_result.getString("ARR")));
+				busInfo.setFare(get_result.getInt("Fare"));
+				
+			}
+			
+			
+			String check_query = "Select * from BusInfo where BusNo=? and avaliable_seats >= ? and Dep > ?";
+			
+			PreparedStatement checkStatement =  connection.prepareStatement(check_query);
+			
+			checkStatement.setInt(1, busInfo.getBusNo());
+			checkStatement.setInt(2, tickets);
+			checkStatement.setDate(3, Date.valueOf(LocalDateTime.now().toString()));
+			
+			int check_result = checkStatement.executeUpdate();
+			
+			if(check_result <= 0) {
+				
+				throw new BookingFail("No Seats Available");
+			}
+			
+			String insert_query = "Insert into busbooking (customerId,busNumber,DateOfBooking,Departure,Total_tickets,Total_fare,status) values (? , ? ,?, ? , ? , ? , ?)";
+			
+			PreparedStatement statement = connection.prepareStatement(insert_query);
+			
+			statement.setInt(1,customerid);
+			statement.setInt(2,busInfo.getBusNo());
+			statement.setDate(3,Date.valueOf(LocalDateTime.now().toString()));
+			statement.setDate(4,Date.valueOf(busInfo.getDeparture().toString()));
+			statement.setInt(5,tickets);
+			statement.setInt(6,tickets*busInfo.getFare());
+			statement.setBoolean(7,false);
+			
+			int result = statement.executeUpdate();
+			
+			if(result > 0) {
+				
+			   	throw new BookingFail("Booking Fail");
+			}
+			
+			String update_query = "Update BusInfo set avaliable_seats = ? , booked_seats = ? where BusNo = ? ";
+			
+			PreparedStatement update_statement = connection.prepareStatement(update_query);
+			
+			update_statement.setInt(1, busInfo.getAvaliable_seats() - tickets );
+			update_statement.setInt(2, busInfo.getBooked_seats() + tickets);
+			update_statement.setInt(3, busInfo.getBusNo());
+			
+			int update_result = statement.executeUpdate();
+			
+			if(update_result <= 0) {
+				
+			   	throw new BookingFail("Booking Fail");
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				DBUtils.closeConnection(connection);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return true;
 	}
 
 

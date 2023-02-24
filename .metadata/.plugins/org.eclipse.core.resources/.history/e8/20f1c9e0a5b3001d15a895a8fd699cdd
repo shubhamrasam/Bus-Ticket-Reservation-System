@@ -1,0 +1,20 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.CustomerDao;
+
+public class ChangePassword {
+
+	public static void changePassword(Scanner sc) {
+		
+		CustomerDao customer = new CustomerDaoImpl();
+		
+		System.out.println("Enter your Customer ID: ");
+		int cusID = sc.nextInt();
+		
+		customer.changeCustomerPassword(0, null)
+		
+	}
+	
+}

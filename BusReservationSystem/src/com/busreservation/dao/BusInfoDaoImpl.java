@@ -62,24 +62,27 @@ public class BusInfoDaoImpl implements BusInfoDao {
 		try {
 			
 			connection = DBUtils.createConnection();
-			String insert_query = "INSERT into BusInfo (BusNo,Depfrom,Arrto,Total_Seats,booked_seats,avaliable_seats,Dep ,ARR ,Fare) values (?,?,?,?,?,?,?,?,?)";
+			String insert_query = "INSERT into BusInfo (BusNo,BusType,Depfrom,Arrto,Total_Seats,booked_seats,avaliable_seats,Dep ,ARR ,Fare) values (?,?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement statement = connection.prepareStatement(insert_query);
 			
 			statement.setInt(1,busInfo.getBusNo());
-			statement.setString(2,busInfo.getDepfrom());
-			statement.setString(3,busInfo.getArrto());
-			statement.setInt(4,busInfo.getTotal_seats());
-			statement.setInt(5,busInfo.getBooked_seats());
-			statement.setInt(6,busInfo.getAvaliable_seats());
-			statement.setDate(7, Date.valueOf(busInfo.getDeparture().toString()));
-			statement.setDate(8,Date.valueOf(busInfo.getArrival().toString()) );
-			statement.setInt(9,busInfo.getFare());
+			statement.setString(2,busInfo.getBusType());
+			statement.setString(3,busInfo.getDepfrom());
+			statement.setString(4,busInfo.getArrto());
+			statement.setInt(5,busInfo.getTotal_seats());
+			statement.setInt(6,busInfo.getBooked_seats());
+			statement.setInt(7,busInfo.getAvaliable_seats());
+			statement.setString(8, busInfo.getDeparture().toString());
+			statement.setString(9,busInfo.getArrival().toString());
+			statement.setInt(10,busInfo.getFare());
 
 			int result = statement.executeUpdate();
 			
 			if(result > 0) {
-			   	throw new SomeThingWentWrong("Some Thing Went Wrong Please Try Again");
+				
+			}else {
+				throw new SomeThingWentWrong("Some Thing Went Wrong Please Try Again");
 			}
 			
 		} catch (SQLException e) {
@@ -233,9 +236,11 @@ public class BusInfoDaoImpl implements BusInfoDao {
 			
 			PreparedStatement statement = connection.prepareStatement(get_query);
 		    
+			String date = LocalDateTime.now().toString();
+			
 			statement.setString(1, departure);
 			statement.setString(2, arrival);
-			statement.setDate(3, Date.valueOf(LocalDateTime.now().toString()));
+			statement.setString(3, date);
 			
             ResultSet result = statement.executeQuery();
             

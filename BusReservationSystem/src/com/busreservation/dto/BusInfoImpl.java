@@ -22,7 +22,7 @@ public class BusInfoImpl implements BusInfo {
 	
 	public BusInfoImpl(int busNo, String busType, String depfrom, String arrto, int total_seats, int booked_seats,
 			int avaliable_seats, LocalDateTime departure, LocalDateTime arrival, int fare) {
-		super();
+
 		this.busNo = busNo;
 		this.busType = busType;
 		this.depfrom = depfrom;

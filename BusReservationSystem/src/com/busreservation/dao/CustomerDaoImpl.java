@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.busreservation.colors.Colors;
 import com.busreservation.dto.Customer;
 import com.busreservation.dto.CustomerImpl;
 import com.busreservation.exception.CustomerNotFound;
@@ -96,11 +98,12 @@ public class CustomerDaoImpl implements CustomerDao {
 			statement.setString(1,email);
 			statement.setString(2,password);
 
-			int result = statement.executeUpdate();
+			ResultSet result = statement.executeQuery();
 			
-			if(result > 0) {
+			if(isEmptyResult(result)) {
 			   	throw new WrongCredentials("Login Fail! Please Enter Valid Credentials");
 			}
+			
 			
 		} catch (SQLException e) {
 			
@@ -121,24 +124,25 @@ public class CustomerDaoImpl implements CustomerDao {
 
 
 	@Override
-	public boolean changeCustomerPassword(int customerID, String newPassword) throws CustomerNotFound, SomeThingWentWrong {
+	public boolean changeCustomerPassword(String email, String newPassword) throws CustomerNotFound, SomeThingWentWrong {
 		Connection connection = null;
 
 		try {
 			connection = DBUtils.createConnection();
 			
-			String update_query = "UPDATE customer set password = ? where customerId = ?";
+			String update_query = "UPDATE customer set password = ? where email = ?";
 			
 			PreparedStatement statement = connection.prepareStatement(update_query);
 			
 			statement.setString(1,newPassword);
-			statement.setInt(2,customerID);
+			statement.setString(2,email);
 			
             int result	= statement.executeUpdate();
             
             if(result > 0) {
             	
-                 System.out.println("Password Changed Successfully");
+                 System.out.println(Colors.GREEN_BACKGROUND+"Password Changed Successfully"+Colors.RESET);
+                 System.out.println("");
             	
             }else {
             	
@@ -200,6 +204,53 @@ public class CustomerDaoImpl implements CustomerDao {
 		return customers;
 		
 		
+	}
+
+	@Override
+	public Customer getMyDetails(String email) throws CustomerNotFound {
+		
+		Connection connection = null;
+        Customer customer = new CustomerImpl();
+        
+		try {
+			connection = DBUtils.createConnection();
+			
+			String get_query = "SELECT * from Customer";
+			
+			PreparedStatement statement = connection.prepareStatement(get_query);
+		
+            ResultSet result = statement.executeQuery();
+            
+            if(isEmptyResult(result)) {
+            	
+            	throw new CustomerNotFound("Customers Not Found");
+            }
+            
+            if(result.next()) {
+            	
+            	customer.setCustomerId(result.getInt("customerId"));
+     		    customer.setfName(result.getString("fName"));
+     		    customer.setlName(result.getString("lName"));
+                customer.setMobile(result.getString("mobile"));
+                customer.setEmail(result.getString("email"));
+                customer.setPassword(result.getString("password"));
+            	
+            }
+              
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+		    try {
+				DBUtils.closeConnection(connection);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	
+		return customer;
 	}
      
 }

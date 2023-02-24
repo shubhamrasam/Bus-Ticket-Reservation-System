@@ -1,0 +1,36 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+
+public class AdminDashboard {
+
+	public static void adminDashboard(Scanner sc) {
+		
+		 System.out.println(Colors.LIGHT_BLUE_BACKGROUND  +"--------------------------------"+"\n"
+													      +" | 1.Change Password          | "+"\n"
+													      +" | 2.Get Profile Details      | "+"\n"
+													      +" | 3.Search Bus By Destinaton | "+"\n"
+													      +" | 4.Book a Ticket            | "+"\n"
+													      +" | 5.Check a Ticket           | "+"\n"
+										                  +" | 6.Cancel a Ticket          | "+"\n"
+										                  +" | 7.Logout                   | "+"\n"
+										                  +"--------------------------------"+"\n"+Colors.RESET);
+
+		 System.out.print(Colors.BLACK_BOLD+"Your Choice: "+Colors.RESET);
+		 int choice = sc.nextInt(); 
+		 
+//		 add bus
+//		 remove bus
+//		 change bus date
+//		 get bus list
+//		 get customer info
+//		 confirmAllPendingReq
+//		 getPedingTicketReq
+//		 confirmTicket
+//		 logout
+		 
+	}
+	
+}

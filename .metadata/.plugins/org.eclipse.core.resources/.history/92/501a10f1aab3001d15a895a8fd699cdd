@@ -1,0 +1,18 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.dao.BusBookingDao;
+import com.busreservation.dao.BusBookingDaoImpl;
+
+public class BookTicket {
+
+	public static void bookTicket(Scanner sc) {
+		
+		BusBookingDao busBook = new BusBookingDaoImpl();
+		
+		int cusId = sc.nextInt();
+		
+	}
+	
+}

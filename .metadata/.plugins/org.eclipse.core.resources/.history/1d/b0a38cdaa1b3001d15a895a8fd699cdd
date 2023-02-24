@@ -1,0 +1,9 @@
+package com.busreservation.methods;
+
+public class ChangePassword {
+
+	public changePassword(Scanner sc) {
+		
+	}
+	
+}

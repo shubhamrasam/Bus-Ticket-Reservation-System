@@ -1,0 +1,9 @@
+package com.busreservation.methods;
+
+public class CustomerChoice {
+
+	public static CustomerChoice(Scanner sc) {
+		
+	}
+	
+}
