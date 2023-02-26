@@ -85,9 +85,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public boolean customerLogin(String email, String password) throws SomeThingWentWrong, WrongCredentials {
+	public Customer customerLogin(String email, String password) throws SomeThingWentWrong, WrongCredentials {
 		Connection connection = null;
-		
+		Customer cus = new CustomerImpl();
 		try {
 			
 			connection = DBUtils.createConnection();
@@ -102,6 +102,18 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 			if(isEmptyResult(result)) {
 			   	throw new WrongCredentials("Login Fail! Please Enter Valid Credentials");
+			}
+			
+			if(result.next()) {
+				
+				cus.setCustomerId(result.getInt("customerId"));
+			    cus.setfName(result.getString("fName"));
+	            cus.setlName(result.getString("lName"));
+	            cus.setMobile(result.getString("mobile"));
+	            cus.setEmail(result.getString("email"));
+	            cus.setPassword(result.getString("password"));
+			
+				
 			}
 			
 			
@@ -119,7 +131,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 		}
 		
-		return true;
+		return cus;
 	}
 
 
@@ -207,7 +219,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Customer getMyDetails(String email) throws CustomerNotFound {
+	public Customer getMyDetails(String email,int CustomerID) throws CustomerNotFound {
 		
 		Connection connection = null;
         Customer customer = new CustomerImpl();
@@ -215,15 +227,18 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			connection = DBUtils.createConnection();
 			
-			String get_query = "SELECT * from Customer";
+			String get_query = "SELECT * from Customer where email = ? and customerId = ?";
 			
 			PreparedStatement statement = connection.prepareStatement(get_query);
 		
+			statement.setString(1, email);
+			statement.setInt(2, CustomerID);
+			
             ResultSet result = statement.executeQuery();
             
             if(isEmptyResult(result)) {
             	
-            	throw new CustomerNotFound("Customers Not Found");
+            	throw new CustomerNotFound();
             }
             
             if(result.next()) {

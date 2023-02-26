@@ -81,8 +81,14 @@ public class CustomerImpl implements Customer {
 
 	@Override
 	public String toString() {
-		return "Customer:-  CustomerId: " + customerId + ", FirstName: " + fName + ", LastName: " + lName + ", Mobile: " + mobile
-				+ ", Email: " + email + ", Password: " + password;
+		
+		return "CustomerId: " + customerId +"\n" 
+	           +"FirstName: " + fName + "\n"
+			   +"LastName: " + lName +"\n"
+	           +"Mobile: " + mobile + "\n"
+			   +"Email: " + email +"\n"
+	           +"Password: " + password + "\n";
+		
 	}
 
 	@Override

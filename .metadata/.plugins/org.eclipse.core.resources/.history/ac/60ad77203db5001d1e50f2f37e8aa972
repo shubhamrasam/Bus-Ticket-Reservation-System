@@ -1,0 +1,5 @@
+package com.busreservation.methods;
+
+public class BusBooking {
+
+}

@@ -1,0 +1,48 @@
+package com.busreservation.dto;
+
+public interface Customer {
+	
+	/**
+	 * Below Method is to Get CustomerId
+	 * @return CustomerId
+	 */
+	public int getCustomerId();
+
+	public void setCustomerId(int customerId);
+	/**
+	 * Below Method is to Get First Name
+	 * @return FirstName
+	 */
+	public String getfName();
+
+	public void setfName(String fName);
+	/**
+	 * Below Method is to Get Last Name
+	 * @return LastName
+	 */
+	public String getlName();
+
+	public void setlName(String lName);
+	/**
+	 * Below Method is to Get Mobile
+	 * @return Mobile
+	 */
+	public String getMobile();
+
+	public void setMobile(String mobile);
+	/**
+	 * Below Method is to Get CustomerId
+	 * @return CustomerId
+	 */
+	public String getEmail();
+
+	public void setEmail(String email);
+	/**
+	 * Below Method is to Get CustomerId
+	 * @return CustomerId
+	 */
+	public String getPassword();
+
+	public void setPassword(String password);
+	
+}

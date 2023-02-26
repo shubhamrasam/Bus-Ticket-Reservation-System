@@ -1,0 +1,57 @@
+package com.busreservation.dao;
+
+import java.util.List;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Customer;
+import com.busreservation.exception.CustomerNotFound;
+import com.busreservation.exception.SomeThingWentWrong;
+import com.busreservation.exception.WrongCredentials;
+
+public interface CustomerDao {
+
+	/**
+	 * 
+	 * @param customer
+	 * @return
+	 * @throws SomeThingWentWrong
+	 */
+	boolean customerSignUp(Customer customer) throws SomeThingWentWrong;
+	
+	/**
+	 * 
+	 * @param email
+	 * @param password
+	 * @return
+	 * @throws SomeThingWentWrong
+	 * @throws WrongCredentials
+	 */
+	Customer customerLogin(String email , String password) throws SomeThingWentWrong , WrongCredentials;
+	
+	/**
+	 * 
+	 * @param email
+	 * @param newPassword
+	 * @return
+	 * @throws CustomerNotFound
+	 * @throws SomeThingWentWrong
+	 */
+	boolean changeCustomerPassword(String email , String newPassword) throws CustomerNotFound ,SomeThingWentWrong;
+	
+	/**
+	 * Below Method is for
+	 * @return
+	 * @throws CustomerNotFound
+	 */
+	List<Customer> getCustomersInfo() throws CustomerNotFound;
+	
+	/**
+	 * Below Method is for Get Details of Customer
+	 * @param email
+	 * @param CustomerID
+	 * @return Customer
+	 * @throws CustomerNotFound
+	 */
+	Customer getMyDetails(String email,int CustomerID)throws CustomerNotFound;
+	
+}

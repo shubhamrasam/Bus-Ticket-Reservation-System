@@ -96,9 +96,15 @@ public class TicketImpl implements Ticket {
 	}
 	@Override
 	public String toString() {
-		return "TicketImpl [ticketNo=" + ticketNo + ", customerId=" + customerId + ", busNumber=" + busNumber
-				+ ", DateOfBooking=" + DateOfBooking + ", Departure=" + Departure + ", Total_tickets=" + Total_tickets
-				+ ", Total_fare=" + Total_fare + "]";
+		
+		return "TicketNo: " + ticketNo +"\n"
+	           +"Customer Id: " + customerId +"\n"
+	           +"Bus Number: " + busNumber +"\n"
+			   +"Date Of Booking: " + DateOfBooking +"\n"
+			   +"Departure: " + Departure + "\n"
+			   +"Total_tickets: " + Total_tickets+ "\n"
+			   +"Total_fare: " + Total_fare + "\n";
+		
 	}
 
 	@Override
