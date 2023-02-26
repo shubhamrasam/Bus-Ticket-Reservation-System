@@ -1,0 +1,28 @@
+package com.busreservation.dao;
+
+import java.util.List;
+
+import com.busreservation.dto.BusInfo;
+import com.busreservation.dto.Ticket;
+import com.busreservation.exception.BookingFail;
+import com.busreservation.exception.NoTicketFound;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public interface BusBookingDao {
+
+	
+	boolean bookTicket(int customerid , int busId , int tickets) throws BookingFail;
+	
+	Ticket getTicket(int customerid) throws NoTicketFound;
+	
+	boolean cancelBooking(int ticketNo , int customerID) throws SomeThingWentWrong;
+	
+	boolean confirmTicket(int ticketNo) throws NoTicketFound;
+	
+	List<Ticket> getPedingTicketReq() throws NoTicketFound;
+	
+	List<Ticket> getAllTicketList() throws NoTicketFound;
+	
+	boolean confirmAllPendingReq() throws SomeThingWentWrong;
+	
+}

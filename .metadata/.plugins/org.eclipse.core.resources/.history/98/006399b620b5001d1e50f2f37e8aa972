@@ -1,0 +1,57 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+import com.busreservation.dao.CustomerDao;
+import com.busreservation.dao.CustomerDaoImpl;
+import com.busreservation.dto.Customer;
+import com.busreservation.dto.CustomerImpl;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public class SignUpCustomer {
+
+	public static void signUpCustomer(Scanner sc) {
+
+		 CustomerDao customer = new CustomerDaoImpl();
+		 
+		 System.out.println("Please Enter your First Name");
+		 String fName = sc.next();
+		 System.out.println("Please Enter your Last Name");
+		 String lName = sc.next();
+		 System.out.println("Please Enter your Mobile Number");
+		 String mobile = sc.next();
+		 System.out.println("Please Enter your Email");
+		 String email = sc.next();
+		 System.out.println("Please Enter your Password");
+		 String password = sc.next();
+		 
+		 Customer cus = new CustomerImpl(fName , lName , mobile ,email ,password);
+		 
+		 try {
+			
+			 if(customer.customerSignUp(cus)){
+				 
+				 System.out.println("");
+				 System.out.println(Colors.GREEN_BACKGROUND + " Sign-Up Successful " + Colors.RESET);
+				 System.out.println("");
+				 
+				 try {
+					 
+					Thread.sleep(2000);
+					
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				}
+				
+				 LoginCustomer.loginCustomer(sc);
+			 }
+			
+		} catch (SomeThingWentWrong e) {
+			e.printStackTrace();
+		}
+		 
+	}
+
+}

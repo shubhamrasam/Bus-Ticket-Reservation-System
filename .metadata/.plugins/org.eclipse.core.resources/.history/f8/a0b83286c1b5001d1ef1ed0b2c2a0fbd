@@ -1,0 +1,51 @@
+package com.busreservation.dto;
+
+import java.time.LocalDateTime;
+
+public interface Ticket {
+	
+	/**
+	 * Below Method is to Get Ticket Number
+	 * @return ticketNo
+	 */
+	public int getTicketNo();
+	
+	/**
+	 *  Below Method is to Set Ticket Number
+	 * @param ticketNo
+	 */
+	public void setTicketNo(int ticketNo);
+
+	/**
+	 * Below Method is to Get Ticket Number
+	 * @return ticketNo
+	 */
+	
+	public int getCustomerId();
+
+	public void setCustomerId(int customerId);
+
+	public int getBusNumber();
+
+	public void setBusNumber(int busNumber);
+
+	public LocalDateTime getDateOfBooking();
+
+	public void setDateOfBooking(LocalDateTime dateOfBooking);
+
+	public LocalDateTime getDeparture();
+
+	public void setDeparture(LocalDateTime departure);
+
+	public int getTotal_tickets();
+
+	public void setTotal_tickets(int total_tickets);
+
+	public int getTotal_fare();
+
+	public void setTotal_fare(int total_fare);
+	
+	public boolean isStatus();
+
+	public void setStatus(boolean status);
+}

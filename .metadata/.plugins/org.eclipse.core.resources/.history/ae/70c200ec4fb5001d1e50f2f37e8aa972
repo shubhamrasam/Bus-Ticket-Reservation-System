@@ -1,0 +1,101 @@
+package com.busreservation.methods;
+
+import java.util.Scanner;
+
+import com.busreservation.colors.Colors;
+import com.busreservation.dao.BusBookingDao;
+import com.busreservation.dao.BusBookingDaoImpl;
+import com.busreservation.dto.Ticket;
+import com.busreservation.dto.TicketImpl;
+import com.busreservation.exception.NoTicketFound;
+import com.busreservation.exception.SomeThingWentWrong;
+
+public class TicketInfo {
+	
+	public static void getAllPendingReq(Scanner sc) {
+		
+		BusBookingDao busBooking = new BusBookingDaoImpl(); 
+			
+			try {
+				
+				busBooking.getPedingTicketReq().forEach(i->{
+					System.out.println(i);
+				});
+				
+			} catch (NoTicketFound e) {
+			
+				System.out.println(Colors.YELLOW_BACKGROUND+" No Record Found "+Colors.RESET);
+				AdminDashboard.adminDashboard(sc);
+			}
+			
+		
+	}
+	
+	public static void confirmAllPendingReq(Scanner sc) {
+		
+		BusBookingDao busBooking = new BusBookingDaoImpl(); 
+
+				try {
+					
+					if(busBooking.confirmAllPendingReq()) {
+						
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						
+						System.out.println("All Tickets are Confirm");
+						AdminDashboard.adminDashboard(sc);
+						
+					}
+					
+					
+				} catch (SomeThingWentWrong e) {
+				   
+					System.out.println(Colors.YELLOW_BACKGROUND+" No Record Found "+Colors.RESET);
+					
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+					
+					System.out.println();
+					AdminDashboard.adminDashboard(sc);
+				}
+		
+	}
+	
+	public static void confirmByTicketNo(Scanner sc) {
+		
+		BusBookingDao busBooking = new BusBookingDaoImpl(); 
+		
+		System.out.println("Enter Ticket Number");
+		int ticketNumber = sc.nextInt();
+		
+		try {
+			
+			if(busBooking.confirmTicket(ticketNumber)) {
+				
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
+				System.out.println("");
+				System.out.println(Colors.GREEN_BACKGROUND+" Ticket is Confirm Now "+ Colors.RESET);
+				System.out.println("");
+				AdminDashboard.adminDashboard(sc);
+			}
+			
+		} catch (NoTicketFound e) {
+			System.out.println(Colors.RED_BACKGROUND+" No Ticket Found "+ Colors.RESET);
+			AdminDashboard.adminDashboard(sc);
+		}
+		
+		
+	}
+	
+}

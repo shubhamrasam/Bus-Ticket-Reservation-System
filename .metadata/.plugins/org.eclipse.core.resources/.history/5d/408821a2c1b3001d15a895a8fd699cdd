@@ -1,7 +1,0 @@
-package com.busreservation.methods;
-
-public class AdminLogin {
-
-	adminLogin(Scanner sc)
-	
-}

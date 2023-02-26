@@ -120,9 +120,18 @@ public class BusInfoImpl implements BusInfo {
 
 	@Override
 	public String toString() {
-		return "BusNumber: " + busNo + ", Depfrom: " + depfrom + ", Arrivalto: " + arrto + ", Total_seats: "
-				+ total_seats + ", Booked_seats: " + booked_seats + ", Avaliable_seats: " + avaliable_seats
-				+ ", departure: " + departure + ", Arrival: " + arrival + ", fare: " + fare ;
+		 String val = "Bus Number: " + busNo + "\n" 
+	                 +"Depfrom: " + depfrom +  "\n" 
+				     +"Arrivalto: " + arrto +  "\n" 
+	                 +"Total_seats: "+ total_seats + "\n" 
+				     +"Booked_seats: " + booked_seats + "\n" 
+	                 +"Avaliable_seats: " + avaliable_seats + "\n" 
+				     +"Departure: " + departure + "\n" 
+				     +"Arrival: " + arrival + "\n" 
+				     +"Fare: " + fare + "\n";
+		 
+		 
+		 return val;
 	}
 
 	@Override

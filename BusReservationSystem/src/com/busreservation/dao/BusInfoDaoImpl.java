@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class BusInfoDaoImpl implements BusInfoDao {
 	
 	static List<BusInfo> getBusInfo(ResultSet result) throws SQLException{
 		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		List<BusInfo> buses = new ArrayList<>();
 		
 		while(result.next()) {
@@ -35,8 +37,8 @@ public class BusInfoDaoImpl implements BusInfoDao {
 		    bus.setTotal_seats(result.getInt("Total_Seats"));
 		    bus.setBooked_seats(result.getInt("booked_seats"));
 		    bus.setAvaliable_seats(result.getInt("avaliable_seats"));
-		    bus.setDeparture(LocalDateTime.parse(result.getString("Dep")));
-		    bus.setArrival(LocalDateTime.parse(result.getString("ARR")));
+		    bus.setDeparture(LocalDateTime.parse( result.getString("Dep"), formatter) );
+		    bus.setArrival(LocalDateTime.parse( result.getString("ARR"), formatter));
 		    bus.setFare(result.getInt("Fare"));
 		    
             buses.add(bus);
@@ -81,8 +83,12 @@ public class BusInfoDaoImpl implements BusInfoDao {
 			
 			if(result > 0) {
 				
+				val = " Bus Added Successfully ";
+				
 			}else {
+				
 				throw new SomeThingWentWrong("Some Thing Went Wrong Please Try Again");
+				
 			}
 			
 		} catch (SQLException e) {
@@ -92,8 +98,11 @@ public class BusInfoDaoImpl implements BusInfoDao {
 		}finally {
 			
 			try {
+				
 				DBUtils.closeConnection(connection);
+				
 			} catch (SQLException e) {
+				
 				e.printStackTrace();
 			}
 			
@@ -110,23 +119,23 @@ public class BusInfoDaoImpl implements BusInfoDao {
 		try {
 			connection = DBUtils.createConnection();
 			
-			String update_query = "UPDATE BusInfo set Dep= ? , set ARR = ? where BusNo = ?";
+			String update_query = "UPDATE BusInfo set Dep= ? , ARR = ? where BusNo = ?";
 			
 			PreparedStatement statement = connection.prepareStatement(update_query);
 			
-			statement.setDate(1,Date.valueOf(dep.toString()));
-			statement.setDate(2,Date.valueOf(arr.toString()));
+			statement.setString(1,dep.toString());
+			statement.setString(2,arr.toString());
 			statement.setInt(3,busNumber);
 			
             int result	= statement.executeUpdate();
             
             if(result > 0) {
             	
-                 System.out.println("Bus Date Updated Successfully");
+                 
             	
             }else {
             	
-            	throw new SomeThingWentWrong("Bus Not Found");
+            	throw new SomeThingWentWrong();
             	
             }   
 			
@@ -173,7 +182,9 @@ public class BusInfoDaoImpl implements BusInfoDao {
             }   
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}finally {
 			
 		    try {
@@ -189,6 +200,7 @@ public class BusInfoDaoImpl implements BusInfoDao {
 
 	@Override
 	public List<BusInfo> getBusInfo() throws SomeThingWentWrong {
+		
 		Connection connection = null;
         List<BusInfo> Buses = new ArrayList<>();
         
@@ -203,7 +215,7 @@ public class BusInfoDaoImpl implements BusInfoDao {
             
             if(isEmptyResult(result)) {
             	
-            	throw new SomeThingWentWrong("Bus Not Found");
+            	throw new SomeThingWentWrong();
             }
             
             Buses = getBusInfo(result);
@@ -214,9 +226,13 @@ public class BusInfoDaoImpl implements BusInfoDao {
 		}finally {
 			
 		    try {
+		    	
 				DBUtils.closeConnection(connection);
+				
 			} catch (SQLException e) {
-				e.printStackTrace();
+				
+				e.getMessage();
+				
 			}
 			
 		}
