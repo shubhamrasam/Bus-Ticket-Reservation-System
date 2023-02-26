@@ -55,7 +55,7 @@ public class BusBookingDaoImpl implements BusBookingDao {
 	}
 
 	@Override
-	public Ticket getTicket(int customerId , int busNumber) throws NoTicketFound {
+	public Ticket getTicket(int customerId) throws NoTicketFound {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		Connection connection = null;
@@ -64,12 +64,11 @@ public class BusBookingDaoImpl implements BusBookingDao {
 			
 			connection = DBUtils.createConnection();
 			
-			String get_query = "select * from busbooking where customerId = ? and busNumber = ?";
+			String get_query = "select * from busbooking where customerId = ?";
 			
 			PreparedStatement statement = connection.prepareStatement(get_query);
 			
 			statement.setInt(1,customerId);
-			statement.setInt(2, busNumber);
 			
 			ResultSet result = statement.executeQuery();
 			

@@ -173,6 +173,7 @@ public class BusInfoDaoImpl implements BusInfoDao {
             
             if(result > 0) {
             	
+                 System.out.println("Bus Deleted Successfully");
             	
             }else {
             	

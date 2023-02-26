@@ -27,7 +27,7 @@ public interface BusBookingDao {
 	 * @return Ticket
 	 * @throws NoTicketFound
 	 */
-	Ticket getTicket(int customerid  , int busNumber) throws NoTicketFound;
+	Ticket getTicket(int customerid , , int busNumber) throws NoTicketFound;
 	
 	/**
 	 * Below Method is to get cancel Book Ticket

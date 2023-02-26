@@ -95,11 +95,11 @@ public class CustomerMethods {
 		} catch (SomeThingWentWrong | WrongCredentials e) {
 			
 			System.out.println("");
-			System.out.println(Colors.RED_BACKGROUND+" Wrong Credentials "+Colors.RESET);		
+			System.out.println(Colors.RED_BACKGROUND+"Wrong Credentials"+Colors.RESET);		
 			System.out.println("");
 			count++;
 			if(count == 4) {
-				System.out.println(Colors.RED_BOLD+"You've reached the maximum amount of login attempts!"+Colors.RESET);
+				System.out.println("Enough Attempts");
 				Main.choiceCustomerOrAdmin();
 			}
 			loginCustomer();
@@ -172,14 +172,12 @@ public class CustomerMethods {
 		try {
 			customer.changeCustomerPassword(emailAdd, pass);
 			password = pass;
-			System.out.println("");
-			System.out.println(Colors.GREEN_BACKGROUND+"Password Changed Successfully"+Colors.RESET);
-            System.out.println("");
+			
 			CustomerDashboard.customerChoice();
 		} catch (CustomerNotFound | SomeThingWentWrong e) {
-			System.out.println("");
+			
 			System.out.println(Colors.RED_BACKGROUND + " Customer Not Found " + Colors.RESET);
-			System.out.println("");
+			
 			CustomerDashboard.customerChoice();
 		}
 		
@@ -240,7 +238,7 @@ public class CustomerMethods {
 		
 		BusInfoDao buses = new BusInfoDaoImpl();
 		List<BusInfo> busList = new ArrayList<>();
-		System.out.println("");
+		
 		System.out.println(Colors.BLACK_BOLD+"Bus Pickup From"+Colors.RESET);
 		String dep = sc.next();
 		System.out.println(Colors.BLACK_BOLD +"Bus Drop location"+Colors.RESET);
@@ -283,11 +281,11 @@ public class CustomerMethods {
 		
 		Ticket ticket = new TicketImpl();
 		System.out.println("");
-		System.out.println(Colors.BLACK_BOLD + "Please Enter Bus Number" + Colors.RESET);
-		int busNumber = 0;
+		System.out.println(Colors.BLACK_BOLD + "Please Enter Customer Id" + Colors.RESET);
+		int ticketNumber = 0;
 		
 		try {
-			busNumber = sc.nextInt();
+			ticketNumber = sc.nextInt();
 		}catch (InputMismatchException e) {
 			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + " Input type should be Number " + Colors.RESET);
@@ -296,7 +294,7 @@ public class CustomerMethods {
 		}
 		
 		try {
-			ticket = busBooking.getTicket(cusID,busNumber);
+			ticket = busBooking.getTicket(ticketNumber);
 		    
 			System.out.println("");
 			System.out.println(Colors.PURPLE_BOLD + " Ticket Number : " + ticket.getTicketNo() + Colors.RESET);

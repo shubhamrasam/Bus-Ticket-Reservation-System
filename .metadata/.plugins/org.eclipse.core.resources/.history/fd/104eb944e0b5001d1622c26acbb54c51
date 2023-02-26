@@ -69,7 +69,6 @@ public class BusBookingDaoImpl implements BusBookingDao {
 			PreparedStatement statement = connection.prepareStatement(get_query);
 			
 			statement.setInt(1,customerId);
-			statement.setInt(2, busNumber);
 			
 			ResultSet result = statement.executeQuery();
 			
