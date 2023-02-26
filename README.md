@@ -1,6 +1,6 @@
 <div align="center"> <img src="https://user-images.githubusercontent.com/110565344/221412365-74a20f45-5d8d-4b5d-8549-1f9c6c14405a.png"/> </div>
 
-# Bus Ticket Reservation System
+# Introduction
 * Bus Ticket Reservation System is a Java application created to simplify the Bus Booking system 
 * Bus Ticket Reservation System contains Add Bus, Update bus, Delete Bus, Book Bus Etc Methods.
 * Bus Ticket Reservation System is a console based application.
