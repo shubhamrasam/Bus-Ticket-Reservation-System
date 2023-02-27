@@ -23,16 +23,17 @@ public class AdminMethods {
 	public static int count = 1;
 	
 	public static void adminLogin() {
-		
+		 
 		 Scanner sc = new Scanner(System.in);
 		
 		 BusInfoDao admin = new BusInfoDaoImpl();
 
 		 if(count==2) {
-			 System.out.println(Colors.YELLOW_BACKGROUND+"This your "+count+"nd Attempt.You have left with "+ (4-count) +" Attempts"+Colors.RESET);			 
+			 System.out.println(Colors.YELLOW_BACKGROUND+" You have "+ (4-count) +" attempts left! "+Colors.RESET);			 
 		 }else if(count==3) {
-			 System.out.println(Colors.YELLOW_BACKGROUND+"This your "+count+"rd Attempt.You have left with "+ (4-count) +" Attempts"+Colors.RESET);			 
+			 System.out.println(Colors.YELLOW_BACKGROUND+" You have "+ (4-count) +" attempts left! "+Colors.RESET);			 
 		 }
+		 System.out.println("");
 		 System.out.println(Colors.BLACK_BOLD +"Please Enter your username" + Colors.RESET);
 		 
 		 String username = null ;
@@ -41,7 +42,7 @@ public class AdminMethods {
 			 username = sc.next();
 		 }catch (InputMismatchException e) {
 				System.out.println("");
-				System.out.println(Colors.RED_BACKGROUND + "Input type should be String" + Colors.RESET);
+				System.out.println(Colors.RED_BACKGROUND + " Input type should be String " + Colors.RESET);
 				System.out.println("");
 				adminLogin();
 		 }
@@ -54,7 +55,7 @@ public class AdminMethods {
 			 password = sc.next();
 		 }catch (InputMismatchException e) {
 				System.out.println("");
-				System.out.println(Colors.RED_BACKGROUND + "Input type should be String" + Colors.RESET);
+				System.out.println(Colors.RED_BACKGROUND + " Input type should be String " + Colors.RESET);
 				System.out.println("");
 				adminLogin();
 		 }
@@ -64,18 +65,18 @@ public class AdminMethods {
 			 
 			 if(admin.loginAdmin(username, password)) {
 				 System.out.println("");
-				 System.out.println(Colors.GREEN_BACKGROUND +" Welcome Admin " + Colors.RESET);
-				 System.out.println("");
+				 System.out.println(Colors.BOXING+Colors.BLACK_BOLD+Colors.BANANA_YELLOW_BACKGROUND +"  Welcome Admin  " + Colors.RESET);
 				 AdminDashboard.adminDashboard();
 				 
 			 }
 			 
 		} catch (WrongCredentials e) {
-			
-			 System.out.println(Colors.RED_BACKGROUND +"Wrong Credentials" + Colors.RESET);
+			 System.out.println("");
+			 System.out.println(Colors.RED_BACKGROUND +" Wrong Credentials " + Colors.RESET);
+			 System.out.println("");
 			 count++;
 			 if(count == 4) {
-				System.out.println("Enough Attempts");
+				System.out.println(Colors.RED_BOLD+"You've reached the maximum amount of login attempts!"+Colors.RESET);
 				Main.choiceCustomerOrAdmin();
 			}
 			 adminLogin();
@@ -91,13 +92,24 @@ public class AdminMethods {
 			
 			List<Ticket> list = busBooking.getAllTicketList();
 			
-			list.forEach(System.out::println);
+			list.forEach(i->{
+				System.out.println(Colors.PURPLE_BOLD+i+Colors.RESET);
+			});
 			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			System.out.println("");
+			AdminDashboard.adminDashboard();
 			
 		} catch (NoTicketFound e) {
-		
+		    
 			System.out.println(Colors.YELLOW_BACKGROUND + " No Ticket Found " + Colors.RESET);
-			
+			System.out.println("");
+			AdminDashboard.adminDashboard();
 		}
 		
 	}
@@ -111,7 +123,9 @@ public class AdminMethods {
 			
 			try {
 				
-				busBooking.getPedingTicketReq().forEach(System.out::println);
+				busBooking.getPedingTicketReq().forEach(i->{
+					 System.out.println(Colors.PURPLE_BOLD+i+Colors.RESET);
+				});
 				
 				try {
 					Thread.sleep(2000);
@@ -123,8 +137,9 @@ public class AdminMethods {
 				AdminDashboard.adminDashboard();
 				
 			} catch (NoTicketFound e) {
-			
+			    
 				System.out.println(Colors.YELLOW_BACKGROUND+" No Record Found "+Colors.RESET);
+				 System.out.println("");
 				AdminDashboard.adminDashboard();
 			}
 			
@@ -154,9 +169,9 @@ public class AdminMethods {
 				
 				
 			} catch (SomeThingWentWrong e) {
-			   
+	
 				System.out.println(Colors.YELLOW_BACKGROUND+" No Record Found "+Colors.RESET);
-				
+				 System.out.println("");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e1) {
@@ -174,14 +189,14 @@ public class AdminMethods {
 		Scanner sc = new Scanner(System.in);
 		BusBookingDao busBooking = new BusBookingDaoImpl(); 
 		
-		System.out.println("Enter Ticket Number");
+		System.out.println(Colors.BLACK_BOLD+"Enter Ticket Number"+Colors.RESET);
 		int ticketNumber = 0;
 		
 		try {
 			ticketNumber = sc.nextInt();
 		}catch (InputMismatchException e) {
 			System.out.println("");
-			System.out.println(Colors.RED_BACKGROUND + "Input type should be Number" + Colors.RESET);
+			System.out.println(Colors.RED_BACKGROUND + " Input type should be Number " + Colors.RESET);
 			System.out.println("");
 			confirmByTicketNo();
 		}
@@ -203,7 +218,9 @@ public class AdminMethods {
 			}
 			
 		} catch (NoTicketFound e) {
+            System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND+" No Ticket Found "+ Colors.RESET);
+			 System.out.println("");
 			AdminDashboard.adminDashboard();
 		}
 		
@@ -216,7 +233,11 @@ public class AdminMethods {
 		CustomerDao customers = new CustomerDaoImpl();
 		
 		try {
-			customers.getCustomersInfo().forEach(System.out::println);
+			customers.getCustomersInfo().forEach(i->{
+				
+				System.out.println(Colors.PURPLE_BOLD+i+Colors.RESET);
+				
+			});
 
 			try {
 				Thread.sleep(2000);
@@ -226,8 +247,9 @@ public class AdminMethods {
 			AdminDashboard.adminDashboard();
 			
 		} catch (CustomerNotFound e) {
-		
-			e.printStackTrace();
+			 System.out.println("");
+			System.out.println(Colors.RED_BACKGROUND + " No Customer Found " + Colors.RESET);
+			 System.out.println("");
 			AdminDashboard.adminDashboard();
 		}
 		

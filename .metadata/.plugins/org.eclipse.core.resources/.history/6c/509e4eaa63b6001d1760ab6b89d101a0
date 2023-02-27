@@ -43,11 +43,12 @@ public class CustomerMethods {
 		 CustomerDao Customer = new CustomerDaoImpl();
 		
 		 if(count==2) {
-			 System.out.println(Colors.YELLOW_BACKGROUND+"This your "+count+"nd Attempt.You have left with "+ (4-count) +" Attempts"+Colors.RESET);			 
+			 System.out.println(Colors.YELLOW_BACKGROUND+" You have "+ (4-count) +" attempts left! "+Colors.RESET);
 		 }else if(count==3) {
-			 System.out.println(Colors.YELLOW_BACKGROUND+"This your "+count+"rd Attempt.You have left with "+ (4-count) +" Attempts"+Colors.RESET);			 
+			 System.out.println(Colors.YELLOW_BACKGROUND+" You have "+ (4-count) +" attempts left! "+Colors.RESET);
 		 }
 		 
+		 System.out.println("");
 		 System.out.println(Colors.BLACK_BOLD + "Please Enter your Email" + Colors.RESET);
 		 String emailAddress = null;
 		 
@@ -93,11 +94,12 @@ public class CustomerMethods {
 			
 		} catch (SomeThingWentWrong | WrongCredentials e) {
 			
-			System.out.println(Colors.RED_BACKGROUND+"Wrong Credentials"+Colors.RESET);		
+			System.out.println("");
+			System.out.println(Colors.RED_BACKGROUND+" Wrong Credentials "+Colors.RESET);		
 			System.out.println("");
 			count++;
 			if(count == 4) {
-				System.out.println("Enough Attempts");
+				System.out.println(Colors.RED_BOLD+"You've reached the maximum amount of login attempts!"+Colors.RESET);
 				Main.choiceCustomerOrAdmin();
 			}
 			loginCustomer();
@@ -112,7 +114,8 @@ public class CustomerMethods {
 		
 		CustomerDao customer = new CustomerDaoImpl();
 		Customer cus = null;
-		System.out.println("Please Enter your Email");
+		System.out.println("");
+		System.out.println(Colors.BLACK_BOLD+"Please Enter your Email"+Colors.RESET);
 		String email = null;
 		
 		try {
@@ -127,7 +130,7 @@ public class CustomerMethods {
 		
 		try {
 			
-			cus = customer.getMyDetails(email);
+			cus = customer.getMyDetails(email,cusID);
 			System.out.println("");
 			System.out.println(Colors.PURPLE_BOLD  +"  CustomerId: " + cus.getCustomerId()        );
 			System.out.println(Colors.PURPLE_BOLD  +"  Name: " + cus.getfName()+" "+cus.getlName());
@@ -138,7 +141,8 @@ public class CustomerMethods {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				
+				System.out.println(Colors.RED_BACKGROUND+" Wrong Email Address "+Colors.RESET);
 			}
 			
 			CustomerDashboard.customerChoice();
@@ -168,12 +172,14 @@ public class CustomerMethods {
 		try {
 			customer.changeCustomerPassword(emailAdd, pass);
 			password = pass;
-			
+			System.out.println("");
+			System.out.println(Colors.GREEN_BACKGROUND+"Password Changed Successfully"+Colors.RESET);
+            System.out.println("");
 			CustomerDashboard.customerChoice();
 		} catch (CustomerNotFound | SomeThingWentWrong e) {
-			
+			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + " Customer Not Found " + Colors.RESET);
-			
+			System.out.println("");
 			CustomerDashboard.customerChoice();
 		}
 		
@@ -185,6 +191,7 @@ public class CustomerMethods {
 		Scanner sc = new Scanner(System.in);
 		BusBookingDao busBook = new BusBookingDaoImpl();
 		
+		System.out.println("");
 		System.out.println(Colors.BLACK_BOLD +"Please Enter your Bus Number"+Colors.RESET);
 		int busNo = 0;
 		
@@ -197,7 +204,7 @@ public class CustomerMethods {
 			bookBusTicket();
 		}
 		
-		System.out.println("Please Enter Ticket Quantity");
+		System.out.println(Colors.BLACK_BOLD + "Please Enter Ticket Quantity"+Colors.RESET);
 		int ticketAmount = 0;
 		
 		try {
@@ -212,14 +219,16 @@ public class CustomerMethods {
 		try {
 			
 			if(busBook.bookTicket(cusID, busNo, ticketAmount)) {
-				
+				System.out.println("");
 			    System.out.println(Colors.YELLOW_BACKGROUND + " Ticket Booked Successfully wait for Confirmation from Admin "+Colors.RESET);
+			    System.out.println("");
 			    CustomerDashboard.customerChoice();
 			}
 			
 		} catch (BookingFail e) {
-			
+			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + " Booking Fail " + Colors.RESET);
+			System.out.println("");
 			CustomerDashboard.customerChoice();
 			
 		}
@@ -231,7 +240,7 @@ public class CustomerMethods {
 		
 		BusInfoDao buses = new BusInfoDaoImpl();
 		List<BusInfo> busList = new ArrayList<>();
-		
+		System.out.println("");
 		System.out.println(Colors.BLACK_BOLD+"Bus Pickup From"+Colors.RESET);
 		String dep = sc.next();
 		System.out.println(Colors.BLACK_BOLD +"Bus Drop location"+Colors.RESET);
@@ -258,7 +267,9 @@ public class CustomerMethods {
 		
 			
 		} catch (SomeThingWentWrong e) {
+			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND+ " No Bus Found " + Colors.RESET);
+			System.out.println("");
 			CustomerDashboard.customerChoice();
 		}
 		
@@ -271,12 +282,12 @@ public class CustomerMethods {
 		BusBookingDao busBooking = new BusBookingDaoImpl(); 
 		
 		Ticket ticket = new TicketImpl();
-		
-		System.out.println(Colors.BLACK_BOLD + "Please Enter Customer Id" + Colors.RESET);
-		int ticketNumber = 0;
+		System.out.println("");
+		System.out.println(Colors.BLACK_BOLD + "Please Enter Bus Number" + Colors.RESET);
+		int busNumber = 0;
 		
 		try {
-			ticketNumber = sc.nextInt();
+			busNumber = sc.nextInt();
 		}catch (InputMismatchException e) {
 			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + " Input type should be Number " + Colors.RESET);
@@ -285,7 +296,7 @@ public class CustomerMethods {
 		}
 		
 		try {
-			ticket = busBooking.getTicket(ticketNumber);
+			ticket = busBooking.getTicket(cusID,busNumber);
 		    
 			System.out.println("");
 			System.out.println(Colors.PURPLE_BOLD + " Ticket Number : " + ticket.getTicketNo() + Colors.RESET);
@@ -295,12 +306,10 @@ public class CustomerMethods {
 			System.out.println(Colors.PURPLE_BOLD + " Date of Departure : " + ticket.getDeparture() + Colors.RESET);
 			System.out.println(Colors.PURPLE_BOLD + " Total tickets : " + ticket.getTotal_tickets()  + Colors.RESET);
 			System.out.println(Colors.PURPLE_BOLD + " Total Fare : " + ticket.getTotal_fare() + Colors.RESET);
-			System.out.println("");
-			
 			if (ticket.isStatus()) {
-				System.out.println(Colors.RED + "Status : Booked"  + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Status : Booked"  + Colors.RESET);
 			}else {
-				System.out.println(Colors.RED + "Status : Pending" + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Status : Pending" + Colors.RESET);
 			}
 
 			System.out.println("");
@@ -314,9 +323,9 @@ public class CustomerMethods {
 			CustomerDashboard.customerChoice();
 			
 		} catch (NoTicketFound e) {
-			
+			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND+" No Ticket Found "+ Colors.RESET);
-			
+			System.out.println("");
 			CustomerDashboard.customerChoice();
 		}
 	}
@@ -325,8 +334,8 @@ public class CustomerMethods {
 		
 		Scanner sc  = new Scanner(System.in);
 		BusBookingDao busBooking = new BusBookingDaoImpl(); 
-
-		System.out.println(Colors.BLACK_BOLD+ "Please Enter Customer ID"+Colors.RESET);
+		System.out.println("");
+		System.out.println(Colors.BLACK_BOLD+ "Please Enter Ticket Number"+Colors.RESET);
 		
 		int ticketNumber = 0;
 		
@@ -336,20 +345,47 @@ public class CustomerMethods {
 			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + "Input type should be Number" + Colors.RESET);
 			System.out.println("");
-			bookBusTicket();
+			cancelTicket();
+		}
+		
+		System.out.println(Colors.BLACK_BOLD+ "Please Enter Bus Number"+Colors.RESET);
+			
+		int busNumber = 0;
+		
+		try {
+			busNumber = sc.nextInt();
+		}catch (InputMismatchException e) {
+			System.out.println("");
+			System.out.println(Colors.RED_BACKGROUND + "Input type should be Number" + Colors.RESET);
+			System.out.println("");
+			cancelTicket();
+		}
+		
+		System.out.println(Colors.BLACK_BOLD+ "Please Enter Number of Tickets"+Colors.RESET);
+		int tickets = 0;
+		
+		try {
+			tickets = sc.nextInt();
+		}catch (InputMismatchException e) {
+			System.out.println("");
+			System.out.println(Colors.RED_BACKGROUND + "Input type should be Number" + Colors.RESET);
+			System.out.println("");
+			cancelTicket();
 		}
 		
 		try {
 			
-			if(busBooking.cancelBooking(ticketNumber , cusID)) {
+			if(busBooking.cancelBooking(ticketNumber , cusID , busNumber , tickets)) {
+				System.out.println("");
 				System.out.println(Colors.GREEN_BACKGROUND+" Ticket Cancel Success " + Colors.RESET);
+				System.out.println("");
 			}
 			
 			CustomerDashboard.customerChoice();
 		} catch (SomeThingWentWrong e) {
-			
+			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND+" You cannot cancel Bus Ticket "+ Colors.RESET);
-			
+			System.out.println("");
 			CustomerDashboard.customerChoice();
 		}
 		

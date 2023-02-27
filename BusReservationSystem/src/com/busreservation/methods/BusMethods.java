@@ -152,9 +152,9 @@ public class BusMethods {
 		
 		try {
 			if(busInfo.removeBus(BusNumber)) {
-				
+				System.out.println("");
 				System.out.println(Colors.GREEN_BACKGROUND+" Bus Removed "+Colors.RESET);
-				
+				System.out.println("");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
@@ -216,8 +216,9 @@ public class BusMethods {
 		try {
 			
 			if(busInfo.updateBusDate(busNo, depDate, arrDate)) {
+				System.out.println("");
 				System.out.println(Colors.GREEN_BACKGROUND+" Bus DateTime Changed "+Colors.RESET);
-				
+				System.out.println("");
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {

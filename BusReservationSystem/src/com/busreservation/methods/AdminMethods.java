@@ -77,6 +77,7 @@ public class AdminMethods {
 			 count++;
 			 if(count == 4) {
 				System.out.println(Colors.RED_BOLD+"You've reached the maximum amount of login attempts!"+Colors.RESET);
+				count = 0;
 				Main.choiceCustomerOrAdmin();
 			}
 			 adminLogin();

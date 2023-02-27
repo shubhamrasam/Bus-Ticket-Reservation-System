@@ -32,4 +32,5 @@
     <fullyQualifiedTypeName name="com.busreservation.exception.SomeThingWentWrong"/>
     <fullyQualifiedTypeName name="com.busreservation.colors.Colors"/>
     <fullyQualifiedTypeName name="com.busreservation.dao.BusBookingDao"/>
+    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
 </qualifiedTypeNameHistroy>

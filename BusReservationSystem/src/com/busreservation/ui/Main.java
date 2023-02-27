@@ -1,6 +1,7 @@
 package com.busreservation.ui;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import com.busreservation.colors.Colors;
 import com.busreservation.methods.AdminMethods;
@@ -32,7 +33,7 @@ public class Main {
 		
 		try {
 			choice = sc.nextInt();
-		}catch (InputMismatchException e) {
+		}catch (NoSuchElementException e) {
 			System.out.println("");
 			System.out.println(Colors.RED_BACKGROUND + "Input type should be number" + Colors.RESET);
 			System.out.println("");

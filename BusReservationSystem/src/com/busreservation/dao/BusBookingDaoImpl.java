@@ -413,6 +413,12 @@ public class BusBookingDaoImpl implements BusBookingDao {
 			
 			PreparedStatement update_statement = connection.prepareStatement(update_query);
 			
+			if(busInfo.getAvaliable_seats() + busInfo.getBooked_seats() > busInfo.getTotal_seats() ) {
+				
+				throw new BookingFail(); 
+				
+			}
+			
 			update_statement.setInt(1, busInfo.getAvaliable_seats() - tickets );
 			update_statement.setInt(2, busInfo.getBooked_seats() + tickets);
 			update_statement.setInt(3, busInfo.getBusNo());
