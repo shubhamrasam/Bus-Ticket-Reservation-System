@@ -18,8 +18,8 @@ Departure DATETIME,
 Total_tickets int,
 Total_fare int ,
 status BOOLEAN,
-CONSTRAINT c_fk foreign key(customerId) references customer(customerId) on delete SET Null,
-CONSTRAINT b_fk foreign key(busNumber) references busInfo(BusNo) on delete SET Null
+CONSTRAINT c_fk foreign key(customerId) references customer(customerId) on delete cascade,
+CONSTRAINT b_fk foreign key(busNumber) references busInfo(BusNo) on delete cascade
 );
 
 create table busInfo(

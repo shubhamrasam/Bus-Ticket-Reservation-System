@@ -24,7 +24,7 @@ public interface BusBookingDao {
 	 * Below Method is to get Book Ticket
 	 * @param customerid
 	 * @param BusNumber
-	 * @return List<Ticket>
+	 * @return Ticket
 	 * @throws NoTicketFound
 	 */
 	List<Ticket> getTicket(int customerid  , int busNumber) throws NoTicketFound;

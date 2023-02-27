@@ -282,7 +282,7 @@ public class CustomerMethods {
 		
 		BusBookingDao busBooking = new BusBookingDaoImpl(); 
 		
-		Ticket ticket = new TicketImpl();
+		
 		System.out.println("");
 		System.out.println(Colors.BLACK_BOLD + "Please Enter Bus Number" + Colors.RESET);
 		int busNumber = 0;
@@ -297,23 +297,34 @@ public class CustomerMethods {
 		}
 		
 		try {
-			ticket = busBooking.getTicket(cusID,busNumber);
-		    
-			System.out.println("");
-			System.out.println(Colors.PURPLE_BOLD + " Ticket Number : " + ticket.getTicketNo() + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Customer ID : " + ticket.getCustomerId() + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Bus Number : " + ticket.getBusNumber() + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Date of Booking : " + ticket.getDateOfBooking() + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Date of Departure : " + ticket.getDeparture() + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Total tickets : " + ticket.getTotal_tickets()  + Colors.RESET);
-			System.out.println(Colors.PURPLE_BOLD + " Total Fare : " + ticket.getTotal_fare() + Colors.RESET);
-			if (ticket.isStatus()) {
-				System.out.println(Colors.PURPLE_BOLD + " Status : Booked"  + Colors.RESET);
-			}else {
-				System.out.println(Colors.PURPLE_BOLD + " Status : Pending" + Colors.RESET);
-			}
+			
+			List<Ticket> tickets = busBooking.getTicket(cusID,busNumber);
+			
+//			Ticket ticket = null;
+			
+			for(Ticket ticket: tickets) {
+				
+				System.out.println("");
+				System.out.println(Colors.PURPLE_BOLD + " Ticket Number : " + ticket.getTicketNo() + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Customer ID : " + ticket.getCustomerId() + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Bus Number : " + ticket.getBusNumber() + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Date of Booking : " + ticket.getDateOfBooking() + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Date of Departure : " + ticket.getDeparture() + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Total tickets : " + ticket.getTotal_tickets()  + Colors.RESET);
+				System.out.println(Colors.PURPLE_BOLD + " Total Fare : " + ticket.getTotal_fare() + Colors.RESET);
+				if (ticket.isStatus()) {
+					System.out.println(Colors.PURPLE_BOLD + " Status : Booked"  + Colors.RESET);
+				}else {
+					System.out.println(Colors.PURPLE_BOLD + " Status : Pending" + Colors.RESET);
+				}
 
-			System.out.println("");
+				System.out.println("");
+				
+			}
+			
+			
+		    
+			
 			
 			try {
 				Thread.sleep(2000);

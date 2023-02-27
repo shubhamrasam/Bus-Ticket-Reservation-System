@@ -55,11 +55,11 @@ public class BusBookingDaoImpl implements BusBookingDao {
 	}
 
 	@Override
-	public Ticket getTicket(int customerId , int busNumber) throws NoTicketFound {
+	public List<Ticket> getTicket(int customerId , int busNumber) throws NoTicketFound {
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		Connection connection = null;
-		Ticket ticket = new TicketImpl();
+		List<Ticket> tickets = null;
 		try { 
 			
 			connection = DBUtils.createConnection();
@@ -79,19 +79,7 @@ public class BusBookingDaoImpl implements BusBookingDao {
 				 
 			}
 			
-			if(result.next()) {
-				
-				ticket.setTicketNo(result.getInt("ticketNo"));
-				ticket.setCustomerId(result.getInt("customerId"));
-				ticket.setBusNumber(result.getInt("busNumber"));
-				ticket.setDateOfBooking(LocalDateTime.parse(result.getString("DateOfBooking"), formatter));
-				ticket.setDeparture(LocalDateTime.parse(result.getString("Departure"), formatter));
-				ticket.setTotal_tickets(result.getInt("Total_tickets"));
-				ticket.setTotal_fare(result.getInt("Total_fare"));
-				ticket.setStatus(result.getBoolean("status"));
-	
-				
-			}
+			tickets = getAllTickets(result);
 			
 			
 		} catch (SQLException e) {
@@ -108,7 +96,7 @@ public class BusBookingDaoImpl implements BusBookingDao {
 			
 		}
 		
-		return ticket;
+		return tickets;
 	}
 
 	@Override
