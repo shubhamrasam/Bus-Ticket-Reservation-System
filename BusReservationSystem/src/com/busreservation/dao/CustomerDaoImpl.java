@@ -51,7 +51,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			
 			connection = DBUtils.createConnection();
-			String insert_query = "INSERT into Customer(fName,lName,mobile,email,password) values (?,?,?,?,?)";
+			String insert_query = "INSERT into Customer(fName,lName,mobile,email,password) values (?,?,?,?,md5(?))";
 			
 			PreparedStatement statement = connection.prepareStatement(insert_query);
 			
@@ -59,21 +59,21 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 			if(customer.getfName() == null) {
 				
-				throw new IllegalArgumentException(" Value of first name is Null ");
+				throw new IllegalArgumentException(" Value of first name is not Valid ");
 			}
 			
 			statement.setString(2,customer.getlName());
 			
 			if(customer.getlName() == null) {
 				
-				throw new IllegalArgumentException(" Value of last name is Null ");
+				throw new IllegalArgumentException(" Value of last name is not Valid ");
 			}
 			
 			statement.setString(3,customer.getMobile());
 			
 			if(customer.getMobile() == null) {
 				
-				throw new IllegalArgumentException(" Value of mobile is Null ");
+				throw new IllegalArgumentException(" Value of mobile is not Valid ");
 			}
 			
 			
@@ -81,7 +81,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 			if(customer.getEmail() == null) {
 				
-				throw new IllegalArgumentException(" Value of email is Null ");
+				throw new IllegalArgumentException(" Value of email is not Valid ");
 			}
 			
 			
@@ -89,7 +89,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			
 			if(customer.getPassword() == null) {
 				
-				throw new IllegalArgumentException(" Value of password is Null ");
+				throw new IllegalArgumentException(" Value of password is not Valid ");
 			}
 			
 
@@ -123,7 +123,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			
 			connection = DBUtils.createConnection();
-			String insert_query = "Select * from Customer where email = ? and password = ?";
+			String insert_query = "Select * from Customer where email = ? and password = md5(?)";
 			
 			PreparedStatement statement = connection.prepareStatement(insert_query);
 			
