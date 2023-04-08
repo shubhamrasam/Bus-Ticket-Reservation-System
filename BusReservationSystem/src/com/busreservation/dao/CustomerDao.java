@@ -14,7 +14,7 @@ public interface CustomerDao {
 	 *  Below Method is to create new Customer account 
 	 * @param customer
 	 * @return boolean
-	 * @throws SomeThingWentWrong
+	 * @throws SomeThingWentWrong , IllegalArgumentException
 	 */
 	boolean customerSignUp(Customer customer) throws SomeThingWentWrong , IllegalArgumentException;
 	
