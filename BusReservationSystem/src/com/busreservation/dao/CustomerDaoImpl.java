@@ -44,7 +44,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	
 	@Override
-	public boolean customerSignUp(Customer customer) throws SomeThingWentWrong {
+	public boolean customerSignUp(Customer customer) throws SomeThingWentWrong , IllegalArgumentException {
 		
 		Connection connection = null;
 		
@@ -56,10 +56,42 @@ public class CustomerDaoImpl implements CustomerDao {
 			PreparedStatement statement = connection.prepareStatement(insert_query);
 			
 			statement.setString(1,customer.getfName());
+			
+			if(customer.getfName() == null) {
+				
+				throw new IllegalArgumentException(" Value of first name is Null ");
+			}
+			
 			statement.setString(2,customer.getlName());
+			
+			if(customer.getlName() == null) {
+				
+				throw new IllegalArgumentException(" Value of last name is Null ");
+			}
+			
 			statement.setString(3,customer.getMobile());
+			
+			if(customer.getMobile() == null) {
+				
+				throw new IllegalArgumentException(" Value of mobile is Null ");
+			}
+			
+			
 			statement.setString(4,customer.getEmail());
+			
+			if(customer.getEmail() == null) {
+				
+				throw new IllegalArgumentException(" Value of email is Null ");
+			}
+			
+			
 			statement.setString(5,customer.getPassword());
+			
+			if(customer.getPassword() == null) {
+				
+				throw new IllegalArgumentException(" Value of password is Null ");
+			}
+			
 
 			int result = statement.executeUpdate();
 			

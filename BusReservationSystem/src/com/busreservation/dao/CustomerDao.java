@@ -16,7 +16,7 @@ public interface CustomerDao {
 	 * @return boolean
 	 * @throws SomeThingWentWrong
 	 */
-	boolean customerSignUp(Customer customer) throws SomeThingWentWrong;
+	boolean customerSignUp(Customer customer) throws SomeThingWentWrong , IllegalArgumentException;
 	
 	/**
 	 *  Below Method is to login Customer account 

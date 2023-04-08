@@ -1,6 +1,8 @@
 package com.busreservation.dto;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomerImpl implements Customer {
 
@@ -18,7 +20,17 @@ public class CustomerImpl implements Customer {
 		this.fName = fName;
 		this.lName = lName;
 		this.mobile = mobile;
-		this.email = email;
+		String regex = "^(.+)@(.+)$";  
+		
+		Pattern pattern = Pattern.compile(regex);  
+		
+        Matcher matcher = pattern.matcher(email); 
+        
+        if(matcher.matches()) {
+        	
+        	this .email = email;
+        	
+        }
 		this.password = password;
 	}
 	
@@ -26,7 +38,19 @@ public class CustomerImpl implements Customer {
 		this.fName = fName;
 		this.lName = lName;
 		this.mobile = mobile;
-		this.email = email;
+		
+		String regex = "^(.+)@(.+)$";   
+		
+		Pattern pattern = Pattern.compile(regex);  
+		
+        Matcher matcher = pattern.matcher(email); 
+        
+        if(matcher.matches()) {
+        	
+        	this .email = email;
+        	
+        }
+		
 		this.password = password;
 	}
 	
@@ -66,9 +90,22 @@ public class CustomerImpl implements Customer {
 	public String getEmail() {
 		return email;
 	}
+	
 	@Override
 	public void setEmail(String email) {
-		this.email = email;
+		
+		String regex = "^(.+)@(.+)$"; 
+		
+		Pattern pattern = Pattern.compile(regex);  
+		
+        Matcher matcher = pattern.matcher(email); 
+        
+        if(matcher.matches()) {
+        	
+        	this .email = email;
+        	
+        }
+		
 	}
 	@Override
 	public String getPassword() {
