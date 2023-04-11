@@ -26,19 +26,50 @@
 - MySQL
 - GitHub
 
+<br>
+    
+## Setting & Installation 
+
+Install the Spring Tools Suite 
+```bash
+https://spring.io/tools
+```
+
+Install MySQL Community Server
+
+```bash
+https://dev.mysql.com/downloads/mysql/
+```
+
+Clone the Repository
+
+```bash
+git clone https://github.com/shubhamrasam/Bus-Ticket-Reservation-System.git
+```
+
+Open MySQL Server
+```bash
+Create a New Database in MySQL: "bus_reservation_system" 
+```
+
+## Run Locally
+
+Go to the Project Directory
+
+```bas
+Open the BusReservationSystem Folder with STS
+```   
+
 # ER Diagram
 ![image](https://user-images.githubusercontent.com/110565344/221411750-f62de872-0a94-45ec-8de7-b18229da5062.png)
 
-# Methods
 
-## Customer Login
-![CustomerLogin](https://user-images.githubusercontent.com/110565344/221411960-f935ea4d-57ec-415b-92da-c4b0dd060e80.jpg)
-## Add Bus By Admin
-![AddBus](https://user-images.githubusercontent.com/110565344/221412017-03b3fbbf-dfd9-4d25-bf78-a1ec6e2b895a.jpg)
-## Customer Ticket Details
-![TicketDetails](https://user-images.githubusercontent.com/110565344/221412169-3b73758c-5bfa-4d7e-a2b1-dc356a4cfb01.jpg)
-## Confirm Ticket By Admin
-![ConfirmTicket](https://user-images.githubusercontent.com/110565344/221412216-0af1ca91-791f-433d-aa6e-2d42304f2166.jpg)
+## Feedback
+Your valuable feedback is greatly appreciated.
+- 📫 How to reach me **shubhamrasam5820@gmail.com**
+
 
 <h1 align="center">Thanks for Reading ❤<h1>
+
+
 

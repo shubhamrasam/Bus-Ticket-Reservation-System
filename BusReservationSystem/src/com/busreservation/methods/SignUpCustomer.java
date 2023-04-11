@@ -27,6 +27,7 @@ public class SignUpCustomer {
 		 System.out.println(Colors.BLACK_BOLD+"Please Enter your Password"+Colors.RESET);
 		 String password = sc.next();
 		 
+		 
 		 Customer cus = new CustomerImpl(fName , lName , mobile ,email ,password);
 		 
 		 try {
@@ -37,7 +38,7 @@ public class SignUpCustomer {
 				 System.out.println(Colors.GREEN_BACKGROUND + " Sign-Up Successful " + Colors.RESET);
 				 System.out.println("");
 				 
-				 try {
+				try {
 					 
 					Thread.sleep(2000);
 					
@@ -49,7 +50,14 @@ public class SignUpCustomer {
 				 Main.customerMethods();
 			 }
 			
-		} catch (SomeThingWentWrong e) {
+		}catch(IllegalArgumentException e) {
+			
+			System.out.println("");
+			System.out.println(Colors.RED_BACKGROUND + e.getMessage() + Colors.RESET);
+			System.out.println("");
+			Main.customerMethods();
+			
+		}catch (SomeThingWentWrong e) {
                
 			System.out.println(Colors.RED_BACKGROUND + " Something Went Wrong " + Colors.RESET);
 			

@@ -1,37 +1,52 @@
+#.Get Ticket Details:
+select * from busbooking where customerId = ? and busNumber = ?;
 
-create table customer(
-customerId int primary key auto_increment,
-fName varchar(20) NOT NULL ,
-lName varchar(20),
-mobile char(10) NOT NULL ,
-email varchar(30) unique NOT NULL,
-password varchar(20) NOT NULL
-);
+#.Confirm Ticket by Ticket Number
+Update BusBooking set status = ? where ticketNo = ?; 
 
+#.Confirm All Tickets 
+Update BusBooking set status = true where status = ?;
 
-create table busbooking(
-ticketNo int primary key auto_increment,
-customerId int ,
-busNumber int ,
-DateOfBooking DATETIME ,
-Departure DATETIME,
-Total_tickets int,
-Total_fare int ,
-status BOOLEAN,
-CONSTRAINT c_fk foreign key(customerId) references customer(customerId) on delete cascade,
-CONSTRAINT b_fk foreign key(busNumber) references busInfo(BusNo) on delete cascade
-);
+#.Get Pending Ticket Request
+select * from BusBooking where status = false;
 
-create table busInfo(
-BusNo int primary key,
-BusType Varchar(20) NOT NULL,
-Depfrom varchar(20) NOT NULL,
-Arrto varchar(20) NOT NULL,
-Total_Seats int NOT NULL,
-booked_seats int NOT NULL,
-avaliable_seats int NOT NULL,
-Dep DATETIME NOT NULL,
-ARR DATETIME NOT NULL,
-Fare int NOT NULL
-);
+#.Cancel Ticket
+Delete from busBooking where ticketNo = ? and Departure > ? and customerId = ?; 
+
+#.Book a Ticket
+Select * from BusInfo where BusNo=? and avaliable_seats >= ? and Dep > ?;
+
+#.Get All Ticket List
+select * from busbooking;
+
+#.Customer Account create
+INSERT into Customer(fName,lName,mobile,email,password) values (?,?,?,?,?);
+
+#.Customer Login
+Select * from Customer where email = ? and password = ?;
+
+#.Update Customer password
+UPDATE customer set password = ? where email = ?;
+
+#.Get All Customer Info
+SELECT * from Customer;
+
+#.Get Personal Details
+SELECT * from Customer where email = ? and customerId = ?;
+
+#.Add Bus
+INSERT into BusInfo (BusNo,BusType,Depfrom,Arrto,Total_Seats,booked_seats,avaliable_seats,Dep ,ARR ,Fare) values (?,?,?,?,?,?,?,?,?,?);
+
+#.Update Bus Date
+UPDATE BusInfo set Dep= ? , ARR = ? where BusNo = ?;
+
+#.Remove Bus
+Delete from BusInfo where BusNo = ?;
+
+#.Get Bus Info
+SELECT * from Businfo;
+
+#.Select Bus by Destination
+SELECT * from Businfo where Depfrom = ? and Arrto = ? and Dep > ?;
+
 
