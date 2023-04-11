@@ -61,7 +61,7 @@ Open the BusReservationSystem Folder with STS
 ```   
 
 # ER Diagram
-![image](https://user-images.githubusercontent.com/110565344/221411750-f62de872-0a94-45ec-8de7-b18229da5062.png)
+![Bus_Reservation_System_ER](https://user-images.githubusercontent.com/110565344/231243010-48cf9db8-4054-4e46-8c35-341d0a54e4aa.png)
 
 
 ## Feedback
