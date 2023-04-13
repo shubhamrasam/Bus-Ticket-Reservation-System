@@ -5,7 +5,7 @@ fName varchar(20) NOT NULL ,
 lName varchar(20),
 mobile char(10) NOT NULL ,
 email varchar(30) unique NOT NULL,
-password varchar(20) NOT NULL
+password varchar(200) NOT NULL
 );
 
 

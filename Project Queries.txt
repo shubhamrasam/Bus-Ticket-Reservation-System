@@ -20,10 +20,10 @@ Select * from BusInfo where BusNo=? and avaliable_seats >= ? and Dep > ?;
 select * from busbooking;
 
 #.Customer Account create
-INSERT into Customer(fName,lName,mobile,email,password) values (?,?,?,?,?);
+INSERT into Customer(fName,lName,mobile,email,password) values (?,?,?,?,md5(?));
 
 #.Customer Login
-Select * from Customer where email = ? and password = ?;
+Select * from Customer where email = ? and password = md5(?);
 
 #.Update Customer password
 UPDATE customer set password = ? where email = ?;
